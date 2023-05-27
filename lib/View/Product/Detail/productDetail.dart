@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../Widget/Layout.dart';
-import '../../../Widget/LayoutSinglePage.dart';
+
 import 'content/binhluan.dart';
 import 'content/itemImage.dart';
 import 'content/mota.dart';
@@ -10,76 +9,12 @@ class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key});
 
   @override
-  State<ProductDetails> createState() => _ProductDetailsState();
+  State<ProductDetails> createState() => _ProductDetails();
 }
 
-class _ProductDetailsState extends State<ProductDetails> {
+class _ProductDetails extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
-    return LayoutWidgetSinglePage(
-      page: Container(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ItemImage(),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Iphone 14 Pro Max - 512GB',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Text(
-              '35000000 đ',
-              style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.red),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Text(
-              '42000000 đ',
-              style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.grey,
-                  decoration: TextDecoration.lineThrough),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Text(
-              "Chi tiết sản phẩm",
-              style: TextStyle(fontSize: 22),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            MoTa(),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              "Bình luận",
-              style: TextStyle(fontSize: 22),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            BinhLuan(),
-            SizedBox(
-              height: 25,
-            ),
-          ],
-        ),
-      ),
-    );
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -206,127 +141,6 @@ class _ProductDetailsState extends State<ProductDetails> {
         ),
       ),
       bottomNavigationBar: ThemMua(),
-    );
-    child:
-    SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {
-                    print("You pressed Icon Elevated Button");
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Colors.red,
-                  ),
-                  label: Text(""),
-                  style: ElevatedButton.styleFrom(primary: Colors.white),
-                ),
-                ElevatedButton.icon(
-                  onPressed: () {
-                    print("You pressed Icon Elevated Button");
-                  },
-                  icon: Icon(
-                    Icons.shopping_cart,
-                    color: Colors.red,
-                  ),
-                  label: Text(""),
-                  style: ElevatedButton.styleFrom(primary: Colors.white),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 60),
-            padding: EdgeInsets.symmetric(vertical: 15),
-            height: 55,
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 234, 224, 224),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  width: 200,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Tìm kiếm sản phẩm"),
-                  ),
-                ),
-                Spacer(),
-                Icon(
-                  Icons.search,
-                  size: 27,
-                  color: Colors.grey,
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          ItemImage(),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            'Iphone 14 Pro Max - 512GB',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Text(
-            '35000000 đ',
-            style: TextStyle(
-                fontSize: 25, fontWeight: FontWeight.w400, color: Colors.red),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Text(
-            '42000000 đ',
-            style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w400,
-                color: Colors.grey,
-                decoration: TextDecoration.lineThrough),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Text(
-            "Chi tiết sản phẩm",
-            style: TextStyle(fontSize: 22),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          MoTa(),
-          SizedBox(
-            height: 15,
-          ),
-          Text(
-            "Bình luận",
-            style: TextStyle(fontSize: 22),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          BinhLuan(),
-          ThemMua(),
-        ],
-      ),
     );
   }
 }
