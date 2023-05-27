@@ -33,13 +33,13 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leading: Center(
-        //     child: IconButton(
-        //   icon: FaIcon(FontAwesomeIcons.chevronLeft),
-        //   onPressed: () {
-        //     Navigator.pop(context);
-        //   },
-        // )),
+      //   leading: Center(
+      //       child: IconButton(
+      //     icon: FaIcon(FontAwesomeIcons.chevronLeft),
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //   )),
         actions: [
           IconButton(
               onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.gear)),
