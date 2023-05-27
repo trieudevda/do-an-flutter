@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:product/item/allItems.dart';
 
+import '../../Widget/WidgetAll.dart';
 import 'Allitem.dart';
 
 class lstItem extends StatefulWidget {
@@ -11,6 +13,7 @@ class lstItem extends StatefulWidget {
 }
 class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin{
   late TabController _tabController;
+  TextEditingController _controllerSearch = TextEditingController();
   @override
   void initState(){
     _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
@@ -31,6 +34,17 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.gear)),
+        ],
+        title: Container(
+          width: MediaQuery.of(context).size.width,
+          height: 40,
+          child: searchAppbar(context, _controllerSearch),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.only(top:0),
         child: ListView(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Allitem.dart';
 import 'content/binhluan.dart';
 import 'content/itemImage.dart';
 import 'content/mota.dart';
@@ -136,6 +137,11 @@ class _ProductDetails extends State<ProductDetails> {
               SizedBox(
                 height: 25,
               ),
+              Center(child: Text("─────────Có thể bạn cũng thích─────────",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)),
+              SizedBox(
+                height: 25,
+              ),
+              ItemsWidget(),
             ],
           ),
         ),

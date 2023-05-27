@@ -71,7 +71,26 @@ class _HomePageState extends State<HomePage> {
             child: ProductGrid(),
         // ProductGrid(),
           ),
-
+          Container(
+            // child: Padding(
+            //   padding: EdgeInsets.all(20),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //     children: [
+            //       Text('Sản Phẩm Mới Nhất',textAlign: TextAlign.center,style: TextStyle(color: Colors.redAccent,fontSize: 20),),
+            //       const ItemsWidget(),
+            //     ],
+            //   ),
+            // ),
+            padding: EdgeInsets.all(40),
+            margin: EdgeInsets.all(20),
+            // color: Colors.white,
+            child: Text('Sản Phẩm Khuyến Mãi',textAlign: TextAlign.center,style: TextStyle(color: Colors.redAccent,fontSize: 20)),
+          ),
+          Container(
+            child: ProductGrid(),
+        // ProductGrid(),
+          ),
         ],
       ),
     );

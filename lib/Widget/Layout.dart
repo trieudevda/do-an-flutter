@@ -18,8 +18,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
   TextEditingController _controllerSearch = TextEditingController();
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    // HomePage(),
-    lstItem(),
+    HomePage(),
+    // lstItem(),
     GioHang(),
     PersonalPage(),
   ];
@@ -57,6 +57,10 @@ class _LayoutWidgetState extends State<LayoutWidget> {
             icon: FaIcon(FontAwesomeIcons.home),
             label: 'Trang chủ',
           ),
+          // BottomNavigationBarItem(
+          //   icon: FaIcon(FontAwesomeIcons.cartShopping),
+          //   label: 'Sản phẩm',
+          // ),
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.cartShopping),
             label: 'Giỏ hàng',

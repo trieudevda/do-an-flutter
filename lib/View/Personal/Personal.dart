@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../Widget/constAll.dart';
 import '../Auth/Login/Login.dart';
 import '../Auth/Register/Register.dart';
+import '../Product/Product.dart';
 import 'Address.dart';
 import 'EditProfile.dart';
 import 'Introduce.dart';
@@ -150,6 +151,7 @@ class _PersonalPageState extends State<PersonalPage> {
           btnSetting(context, 'Giới thiệu', IntroducePage()),
           btnSetting(context, 'Đăng nhập', LoginPage()),
           btnSetting(context, 'Đăng ký', RegisterPage()),
+          btnSetting(context, 'Sản phẩm', lstItem()),
         ],
       ),
     );
