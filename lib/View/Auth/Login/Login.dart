@@ -1,3 +1,6 @@
+import '../../../Widget/Layout.dart';
+import '../../../Widget/WidgetAll.dart';
+import '../../Home/Home.dart';
 import '../Register/Register.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +12,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
+    return WillPopScope(
+      onWillPop: onWillPopScopeFalse,
+      child: Scaffold(
+          body: SingleChildScrollView(
+              child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 80, vertical: 100),
         child: Form(
           child: Column(
@@ -46,13 +52,25 @@ class _LoginPageState extends State<LoginPage> {
                     "Đăng Nhập",
                     style: TextStyle(fontSize: 20),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                LayoutWidget(title: 'Bán hàng')));
+                  },
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.resolveWith<Color>((states) {
+                      return Colors.red;
+                    }),
+                  ),
                 ),
               ),
               SizedBox(
                 height: 8,
               ),
-              Text('Hoặc'),
+              Text('Chưa có tài khoản?'),
               SizedBox(
                 height: 8,
               ),
@@ -68,12 +86,18 @@ class _LoginPageState extends State<LoginPage> {
                       MaterialPageRoute(builder: (context) => RegisterPage()),
                     );
                   },
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.resolveWith<Color>((states) {
+                      return Colors.red;
+                    }),
+                  ),
                 ),
               ),
             ],
           ),
         ),
-      ),
+      ))),
     );
   }
 }

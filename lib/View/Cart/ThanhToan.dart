@@ -3,6 +3,7 @@ import 'SPThanhToan.dart';
 import '../../Model/SanPham.dart';
 import 'GioHang.dart';
 import 'Dathang.dart';
+
 void main() {
   runApp(MaterialApp(
     home: ThanhToan(),
@@ -23,7 +24,6 @@ class _State extends State<ThanhToan> {
           title: Text('Mobile App'),
         ),
         body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          
           Container(
             width: 1080,
             height: 120,
@@ -38,7 +38,8 @@ class _State extends State<ThanhToan> {
           Container(
               width: 600,
               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                decoration:BoxDecoration(border: Border.all(width:0.5,color: Colors.black)),
+              decoration: BoxDecoration(
+                  border: Border.all(width: 0.5, color: Colors.black)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -54,7 +55,7 @@ class _State extends State<ThanhToan> {
               )),
           Container(
               width: 600,
-              padding: EdgeInsets.fromLTRB(0, 30,0,0),
+              padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -62,29 +63,29 @@ class _State extends State<ThanhToan> {
                     children: [
                       Text('Tổng thanh toán',
                           style: TextStyle(fontWeight: FontWeight.bold)),
-                     Container(padding:EdgeInsets.fromLTRB(0, 10,0,0),
-                      child:Text(
-                        '$gia',
-                        style: TextStyle(color: Colors.red),
-                      ))
+                      Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: Text(
+                            '$gia',
+                            style: TextStyle(color: Colors.red),
+                          ))
                     ],
                   ),
-              
-                       ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(  
-    context,  
-    MaterialPageRoute(builder: (context) => DatHang()),  
-  );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.red, // background
-                            onPrimary: Colors.white, // foreground
-                          ),
-                          child: Text(
-                            'Đặt hàng ',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ))
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DatHang()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.red, // background
+                        onPrimary: Colors.white, // foreground
+                      ),
+                      child: Text(
+                        'Đặt hàng ',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ))
                 ],
               ))
         ]));
@@ -93,17 +94,17 @@ class _State extends State<ThanhToan> {
 
 class note extends StatelessWidget {
   note({required this.title});
- final String title;
+  final String title;
   @override
   Widget build(BuildContext context) {
-    return
-    Container(
-      decoration: BoxDecoration(border: Border.all(width:0.5,color: Colors.black)),
-      child: TextField(
-      autofocus: true,
-      decoration: InputDecoration(
-        labelText: title,
-      ),
-    ));
+    return Container(
+        decoration:
+            BoxDecoration(border: Border.all(width: 0.5, color: Colors.black)),
+        child: TextField(
+          autofocus: true,
+          decoration: InputDecoration(
+            labelText: title,
+          ),
+        ));
   }
 }

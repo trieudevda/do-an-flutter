@@ -2,10 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
+import 'View/Auth/Login/Login.dart';
 import 'Widget/Layout.dart';
 import 'firebase_options.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -22,9 +23,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Đồ án Flutter',
       theme: ThemeData(
-        primarySwatch:Colors.blue,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: Colors.white,
+        ),
       ),
-      home: LayoutWidget(title: 'Bán hàng'),
+      home: LoginPage(),
+      // home: LayoutWidget(title: 'Bán hàng'),
       // builder: EasyLoading.init(),
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:product/item/allItems.dart';
 
+import '../../Widget/WidgetAll.dart';
 import 'Allitem.dart';
 
 class lstItem extends StatefulWidget {
@@ -9,30 +11,44 @@ class lstItem extends StatefulWidget {
   @override
   State<lstItem> createState() => _lstItemState();
 }
-class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin{
+
+class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  TextEditingController _controllerSearch = TextEditingController();
   @override
-  void initState(){
+  void initState() {
     _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
     super.initState();
   }
-  _handleTabSelection(){
-    if(_tabController.indexIsChanging){
-      setState(() {
 
-      });
+  _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
     }
   }
+
   @override
-  void dispose(){
+  void dispose() {
     _tabController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.gear)),
+        ],
+        title: Container(
+          width: MediaQuery.of(context).size.width,
+          height: 40,
+          child: searchAppbar(context, _controllerSearch),
+        ),
+      ),
       body: Padding(
-        padding: EdgeInsets.only(top:0),
+        padding: EdgeInsets.only(top: 0),
         child: ListView(
           children: [
             // Text("─────────Có thể bạn cũng thích─────────",textAlign: TextAlign.center,),
@@ -56,8 +72,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin{
                 unselectedLabelColor: Colors.black,
                 labelColor: Colors.black,
                 indicator: UnderlineTabIndicator(
-                    borderSide: BorderSide(width: 1, color: Colors.red)
-                ),
+                    borderSide: BorderSide(width: 1, color: Colors.red)),
                 // indicator: BoxDecoration(
                 //   border: Border(
                 //     right: BorderSide(width: 0, color: Colors.grey),
@@ -66,13 +81,21 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin{
                 //   ),
                 // ),
                 tabs: [
-                  Tab(text: "Liên quan",),
-                  Tab(text: "Bán chạy",),
-                  Tab(text: "Lọc v",),
+                  Tab(
+                    text: "Liên quan",
+                  ),
+                  Tab(
+                    text: "Bán chạy",
+                  ),
+                  Tab(
+                    text: "Lọc v",
+                  ),
                 ],
               ),
             ),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             Container(
               child: [
                 ItemsWidget(),

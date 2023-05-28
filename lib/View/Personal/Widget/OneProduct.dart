@@ -8,16 +8,20 @@ class OneProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) =>  ProductDetails()),
+          MaterialPageRoute(builder: (context) => ProductDetails()),
         );
         // print('product demo');
       },
       child: Container(
-        padding: const EdgeInsets.only(bottom: 10,top: 10,left: 10,right: 10),
-        margin: EdgeInsets.only(top: 5,bottom: 5,),
+        padding:
+            const EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
+        margin: EdgeInsets.only(
+          top: 5,
+          bottom: 5,
+        ),
         decoration: BoxDecoration(
           // border: Border.all(color: Colors.black38),
           color: Colors.white,
@@ -27,7 +31,11 @@ class OneProduct extends StatelessWidget {
             Container(
               alignment: Alignment.centerRight,
               width: MediaQuery.of(context).size.width,
-              child: Text('Chờ thanh toán',textAlign: TextAlign.center,style: TextStyle(color: Colors.red),),
+              child: Text(
+                'Chờ thanh toán',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.red),
+              ),
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,27 +44,55 @@ class OneProduct extends StatelessWidget {
                   'https://cdn.tgdd.vn/Products/Images/42/251192/iphone-14-pro-max-den-thumb-600x600.jpg',
                   width: 90,
                 ),
-                SizedBox(width: 10,),
+                SizedBox(
+                  width: 10,
+                ),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('iPhone 14 Pro Max',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                      SizedBox(height: 5,),
+                      Text(
+                        'iPhone 14 Pro Max',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text('Phân loại: Đen'),
-                          Text('x1',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                          Text(
+                            'x1',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
                         ],
                       ),
-                      SizedBox(height: 15,),
+                      SizedBox(
+                        height: 15,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text('24.000.000 đ',style: TextStyle(decoration: TextDecoration.lineThrough,color: Colors.black38,fontSize: 14),),
-                          SizedBox(width: 10,),
-                          Text('22.000.000 đ',style: TextStyle(color: Colors.red,fontSize: 16,fontWeight: FontWeight.bold),),
+                          Text(
+                            '24.000.000 đ',
+                            style: TextStyle(
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.black38,
+                                fontSize: 14),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            '22.000.000 đ',
+                            style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
                     ],
@@ -70,11 +106,17 @@ class OneProduct extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('1 sản phẩm',style: TextStyle(color: Colors.black38),),
+                Text(
+                  '1 sản phẩm',
+                  style: TextStyle(color: Colors.black38),
+                ),
                 Row(
                   children: [
                     Text('Tổng thanh toán: '),
-                    Text('22.000.000 đ',style: TextStyle(color: Colors.red),)
+                    Text(
+                      '22.000.000 đ',
+                      style: TextStyle(color: Colors.red),
+                    )
                   ],
                 ),
               ],

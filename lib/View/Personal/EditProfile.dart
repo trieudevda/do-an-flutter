@@ -11,15 +11,15 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  Widget btnEdit(String title, String value){
+  Widget btnEdit(String title, String value) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.black,
         side: BorderSide(color: Colors.black12), // foreground border
       ),
-      onPressed: () {  },
+      onPressed: () {},
       child: Padding(
-        padding: const EdgeInsets.only(top: 10,bottom: 10),
+        padding: const EdgeInsets.only(top: 10, bottom: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -27,7 +27,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             Row(
               children: [
                 Text(value),
-                Icon(Icons.navigate_next,color: Colors.black),
+                Icon(Icons.navigate_next, color: Colors.black),
               ],
             ),
           ],
@@ -35,6 +35,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,16 +59,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   child: CircularProgressIndicator(
                     value: loadingProgress.expectedTotalBytes != null
                         ? loadingProgress.cumulativeBytesLoaded /
-                        loadingProgress.expectedTotalBytes!
+                            loadingProgress.expectedTotalBytes!
                         : null,
                   ),
                 );
               },
             ),
-            btnEdit('Tên','Thanh Triều'),
-            SizedBox(height: heightSizedbox,),
-            btnEdit('Giới tính','Nam'),
-            btnEdit('Ngày sinh','25/11/2001'),
+            btnEdit('Tên', 'Thanh Triều'),
+            SizedBox(
+              height: heightSizedbox,
+            ),
+            btnEdit('Giới tính', 'Nam'),
+            btnEdit('Ngày sinh', '25/11/2001'),
           ],
         ),
       ),

@@ -1,4 +1,3 @@
-import '../Login/Login.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -79,28 +78,24 @@ class _RegisterPageState extends State<RegisterPage> {
                                 actions: [
                                   TextButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  LoginPage()),
-                                        );
-                                      },
-                                      child: Text("Đăng nhập")),
-                                  TextButton(
-                                      onPressed: () {
                                         Navigator.of(context).pop();
                                       },
                                       child: Text("Đóng")),
                                 ],
                               ));
                     },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.resolveWith<Color>((states) {
+                        return Colors.red;
+                      }),
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 8,
                 ),
-                Text('Hoặc'),
+                Text('Đã có tài khoản?'),
                 SizedBox(
                   height: 8,
                 ),
@@ -113,6 +108,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.resolveWith<Color>((states) {
+                        return Colors.red;
+                      }),
+                    ),
                   ),
                 ),
               ],

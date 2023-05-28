@@ -8,33 +8,32 @@ class LanguagePage extends StatefulWidget {
 }
 
 class _LanguagePageState extends State<LanguagePage> {
-  Widget btnLanguage(String title){
+  Widget btnLanguage(String title) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.black,
         side: BorderSide(color: Colors.black12), // foreground border
       ),
-      onPressed: () {  },
+      onPressed: () {},
       child: Padding(
-        padding: const EdgeInsets.only(top: 10,bottom: 10),
+        padding: const EdgeInsets.only(top: 10, bottom: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Icon(Icons.check,color: Colors.black),
+            Icon(Icons.check, color: Colors.black),
             Text(title),
           ],
         ),
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Chọn ngôn ngữ'),
-        actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.check))
-        ],
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.check))],
       ),
       body: Container(
         child: Column(
