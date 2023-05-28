@@ -18,7 +18,13 @@ class _LayoutWidgetSinglePageState extends State<LayoutWidgetSinglePage> {
     TextEditingController _controllerSearch = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        leading: const Center(child: FaIcon(FontAwesomeIcons.chevronLeft)),
+        // leading: Center(
+        //     child: IconButton(
+        //       icon: FaIcon(FontAwesomeIcons.chevronLeft),
+        //       onPressed: () {
+        //         Navigator.pop(context);
+        //       },
+        //     )),
         actions: [
           IconButton(onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.gear)),
         ],
