@@ -33,19 +33,28 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Column(
                     children: [
-                      Image.network("https://cdn-icons-png.flaticon.com/512/1985/1985069.png", width: 40,),
+                      Image.network(
+                        "https://cdn-icons-png.flaticon.com/512/1985/1985069.png",
+                        width: 40,
+                      ),
                       Text('Smart Phone')
                     ],
                   ),
                   Column(
                     children: [
-                      Image.network("https://cdn-icons-png.flaticon.com/512/2482/2482264.png", width: 40),
-                      Text('Laptop')],
+                      Image.network(
+                          "https://cdn-icons-png.flaticon.com/512/2482/2482264.png",
+                          width: 40),
+                      Text('Laptop')
+                    ],
                   ),
                   Column(
                     children: [
-                      Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZ1vt9mSYPEq-T-T25huFaSkoOVlTxh24koyTNEga0CX4fyP7rz1dc5ltxdlUBWOMaG4&usqp=CAU", width: 40),
-                      Text('Tablet')],
+                      Image.network(
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZ1vt9mSYPEq-T-T25huFaSkoOVlTxh24koyTNEga0CX4fyP7rz1dc5ltxdlUBWOMaG4&usqp=CAU",
+                          width: 40),
+                      Text('Tablet')
+                    ],
                   ),
                 ],
               ),
@@ -65,11 +74,13 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(40),
             margin: EdgeInsets.all(20),
             // color: Colors.white,
-            child: Text('Sản Phẩm Mới Nhất',textAlign: TextAlign.center,style: TextStyle(color: Colors.redAccent,fontSize: 20)),
+            child: Text('Sản Phẩm Mới Nhất',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.redAccent, fontSize: 20)),
           ),
           Container(
             child: ProductGrid(),
-        // ProductGrid(),
+            // ProductGrid(),
           ),
           Container(
             // child: Padding(
@@ -85,11 +96,13 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(40),
             margin: EdgeInsets.all(20),
             // color: Colors.white,
-            child: Text('Sản Phẩm Khuyến Mãi',textAlign: TextAlign.center,style: TextStyle(color: Colors.redAccent,fontSize: 20)),
+            child: Text('Sản Phẩm Khuyến Mãi',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.redAccent, fontSize: 20)),
           ),
           Container(
             child: ProductGrid(),
-        // ProductGrid(),
+            // ProductGrid(),
           ),
         ],
       ),

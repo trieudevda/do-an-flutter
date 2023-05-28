@@ -11,26 +11,28 @@ class lstItem extends StatefulWidget {
   @override
   State<lstItem> createState() => _lstItemState();
 }
-class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin{
+
+class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   TextEditingController _controllerSearch = TextEditingController();
   @override
-  void initState(){
+  void initState() {
     _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
     super.initState();
   }
-  _handleTabSelection(){
-    if(_tabController.indexIsChanging){
-      setState(() {
 
-      });
+  _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
     }
   }
+
   @override
-  void dispose(){
+  void dispose() {
     _tabController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +48,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin{
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top:0),
+        padding: EdgeInsets.only(top: 0),
         child: ListView(
           children: [
             // Text("─────────Có thể bạn cũng thích─────────",textAlign: TextAlign.center,),
@@ -70,8 +72,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin{
                 unselectedLabelColor: Colors.black,
                 labelColor: Colors.black,
                 indicator: UnderlineTabIndicator(
-                    borderSide: BorderSide(width: 1, color: Colors.red)
-                ),
+                    borderSide: BorderSide(width: 1, color: Colors.red)),
                 // indicator: BoxDecoration(
                 //   border: Border(
                 //     right: BorderSide(width: 0, color: Colors.grey),
@@ -80,13 +81,21 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin{
                 //   ),
                 // ),
                 tabs: [
-                  Tab(text: "Liên quan",),
-                  Tab(text: "Bán chạy",),
-                  Tab(text: "Lọc v",),
+                  Tab(
+                    text: "Liên quan",
+                  ),
+                  Tab(
+                    text: "Bán chạy",
+                  ),
+                  Tab(
+                    text: "Lọc v",
+                  ),
                 ],
               ),
             ),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             Container(
               child: [
                 ItemsWidget(),

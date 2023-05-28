@@ -28,37 +28,42 @@ class _LayoutWidgetSinglePageState extends State<LayoutWidgetSinglePage> {
       _selectedIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: Center(
             child: IconButton(
-              icon: FaIcon(FontAwesomeIcons.chevronLeft),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )),
+          icon: FaIcon(FontAwesomeIcons.chevronLeft),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        )),
         actions: [
           IconButton(
-              onPressed: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(builder: (context) => lstItem()));
-              },
-              icon: const FaIcon(FontAwesomeIcons.gear,color: Colors.red,),
+            onPressed: () {
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(builder: (context) => lstItem()));
+            },
+            icon: const FaIcon(
+              FontAwesomeIcons.gear,
+              color: Colors.red,
+            ),
           ),
         ],
-        title:Container(
+        title: Container(
           width: MediaQuery.of(context).size.width,
           height: 40,
-          child: searchAppbar(context,_controllerSearch),
+          child: searchAppbar(context, _controllerSearch),
         ),
       ),
-      body:SingleChildScrollView(
+      body: SingleChildScrollView(
         child: widget.page,
       ),
-      bottomNavigationBar: bottomNavigationBarAll(context,_selectedIndex,_onItemTapped),
+      bottomNavigationBar:
+          bottomNavigationBarAll(context, _selectedIndex, _onItemTapped),
     );
   }
 }

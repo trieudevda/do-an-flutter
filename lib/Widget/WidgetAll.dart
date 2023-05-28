@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-bool checkOutApp=false;
+bool checkOutApp = false;
 
-Widget searchAppbar(BuildContext context,TextEditingController search){
+Widget searchAppbar(BuildContext context, TextEditingController search) {
   return TextField(
-    onChanged: (value) { },
+    onChanged: (value) {},
     controller: search,
     decoration: InputDecoration(
       labelText: "Tìm kiếm",
@@ -13,7 +13,7 @@ Widget searchAppbar(BuildContext context,TextEditingController search){
       suffixIcon: IconButton(
         icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
         color: Colors.black,
-        onPressed: (){},
+        onPressed: () {},
       ),
       border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -23,7 +23,9 @@ Widget searchAppbar(BuildContext context,TextEditingController search){
     ),
   );
 }
-BottomNavigationBar bottomNavigationBarAll(BuildContext context,int index,final onItemTapped){
+
+BottomNavigationBar bottomNavigationBarAll(
+    BuildContext context, int index, final onItemTapped) {
   return BottomNavigationBar(
     items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(
@@ -44,9 +46,11 @@ BottomNavigationBar bottomNavigationBarAll(BuildContext context,int index,final 
     onTap: onItemTapped,
   );
 }
-Future<bool> onWillPopScopeFalse()async{
+
+Future<bool> onWillPopScopeFalse() async {
   return false;
 }
-Future<bool> onWillPopScopeTrue()async{
+
+Future<bool> onWillPopScopeTrue() async {
   return true;
 }

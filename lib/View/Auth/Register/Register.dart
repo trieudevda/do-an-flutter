@@ -74,19 +74,19 @@ class _RegisterPageState extends State<RegisterPage> {
                       showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
-                            content: Text("Đăng ký thành công!"),
-                            actions: [
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text("Đóng")),
-                            ],
-                          ));
+                                content: Text("Đăng ký thành công!"),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text("Đóng")),
+                                ],
+                              ));
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.resolveWith<Color>((states) {
+                          MaterialStateProperty.resolveWith<Color>((states) {
                         return Colors.red;
                       }),
                     ),
@@ -110,7 +110,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.resolveWith<Color>((states) {
+                          MaterialStateProperty.resolveWith<Color>((states) {
                         return Colors.red;
                       }),
                     ),

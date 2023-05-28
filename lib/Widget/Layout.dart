@@ -35,13 +35,18 @@ class _LayoutWidgetState extends State<LayoutWidget> {
       onWillPop: onWillPopScopeFalse,
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           actions: [
             IconButton(
                 onPressed: () {
                   // Navigator.push(
                   //     context,
                   //     MaterialPageRoute(builder: (context) => lstItem()));
-                }, icon: const FaIcon(FontAwesomeIcons.gear,color: Colors.red,)),
+                },
+                icon: const FaIcon(
+                  FontAwesomeIcons.gear,
+                  color: Colors.red,
+                )),
           ],
           title: Container(
             width: MediaQuery.of(context).size.width,
@@ -50,7 +55,8 @@ class _LayoutWidgetState extends State<LayoutWidget> {
           ),
         ),
         body: _widgetOptions.elementAt(_selectedIndex),
-        bottomNavigationBar: bottomNavigationBarAll(context,_selectedIndex,_onItemTapped),
+        bottomNavigationBar:
+            bottomNavigationBarAll(context, _selectedIndex, _onItemTapped),
       ),
     );
   }

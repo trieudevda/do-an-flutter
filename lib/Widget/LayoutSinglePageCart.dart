@@ -11,10 +11,12 @@ class LayoutWidgetSinglePageCart extends StatefulWidget {
   LayoutWidgetSinglePageCart({super.key, required this.page});
   Widget page;
   @override
-  State<LayoutWidgetSinglePageCart> createState() => _LayoutWidgetSinglePageCartState();
+  State<LayoutWidgetSinglePageCart> createState() =>
+      _LayoutWidgetSinglePageCartState();
 }
 
-class _LayoutWidgetSinglePageCartState extends State<LayoutWidgetSinglePageCart> {
+class _LayoutWidgetSinglePageCartState
+    extends State<LayoutWidgetSinglePageCart> {
   TextEditingController _controllerSearch = TextEditingController();
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
@@ -28,27 +30,36 @@ class _LayoutWidgetSinglePageCartState extends State<LayoutWidgetSinglePageCart>
       _selectedIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: Center(
             child: IconButton(
-              icon: FaIcon(FontAwesomeIcons.chevronLeft,color: Colors.red,),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )),
+          icon: FaIcon(
+            FontAwesomeIcons.chevronLeft,
+            color: Colors.red,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        )),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart,color: Colors.red,)),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.shopping_cart,
+                color: Colors.red,
+              )),
         ],
-        title:Container(
+        title: Container(
           width: MediaQuery.of(context).size.width,
           height: 40,
-          child: searchAppbar(context,_controllerSearch),
+          child: searchAppbar(context, _controllerSearch),
         ),
       ),
-      body:SingleChildScrollView(
+      body: SingleChildScrollView(
         child: widget.page,
       ),
       bottomNavigationBar: ThemMua(),

@@ -35,9 +35,7 @@ class _ProductDetails extends State<ProductDetails> {
           Text(
             '35000000 đ',
             style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w400,
-                color: Colors.red),
+                fontSize: 25, fontWeight: FontWeight.w400, color: Colors.red),
           ),
           SizedBox(
             height: 8,
@@ -75,7 +73,12 @@ class _ProductDetails extends State<ProductDetails> {
           SizedBox(
             height: 25,
           ),
-          Center(child: Text("─────────Có thể bạn cũng thích─────────",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)),
+          Center(
+              child: Text(
+            "─────────Có thể bạn cũng thích─────────",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          )),
           SizedBox(
             height: 25,
           ),
