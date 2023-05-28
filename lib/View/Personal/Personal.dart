@@ -149,8 +149,6 @@ class _PersonalPageState extends State<PersonalPage> {
           btnSetting(context, 'Ngôn ngữ', LanguagePage()),
           btnSetting(context, 'Địa chỉ', AddressPage()),
           btnSetting(context, 'Giới thiệu', IntroducePage()),
-          btnSetting(context, 'Đăng nhập', LoginPage()),
-          btnSetting(context, 'Đăng ký', RegisterPage()),
           btnSetting(context, 'Sản phẩm', lstItem()),
         ],
       ),
