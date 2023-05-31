@@ -1,3 +1,4 @@
+import 'package:do_an_flutter/View/Product/Detail/productDetail.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:product/item/allItems.dart';
@@ -17,7 +18,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
   TextEditingController _controllerSearch = TextEditingController();
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
+    _tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -54,7 +55,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
             // Text("─────────Có thể bạn cũng thích─────────",textAlign: TextAlign.center,),
             // SizedBox(height: 30,),
             // ItemsWidget(),
-            // SizedBox(height: 20,),
+            SizedBox(height: 20,),
             Container(
               height: 50,
               decoration: BoxDecoration(
@@ -88,7 +89,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
                     text: "Bán chạy",
                   ),
                   Tab(
-                    text: "Lọc v",
+                    text: "Lọc <>",
                   ),
                 ],
               ),
@@ -100,8 +101,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
               child: [
                 ItemsWidget(),
                 ItemsWidget(),
-                Text("Chưa có"),
-                //ItemsWidget(),
+                ItemsWidget(),
               ][_tabController.index],
             )
             // Center(

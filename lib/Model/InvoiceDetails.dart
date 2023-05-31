@@ -1,13 +1,7 @@
-import 'package:do_an_flutter/Model/Products.dart';
-
-import 'Invoices.dart';
-
 class InvoiceDetail {
   String? id;
-  // List<Product> product;
   String? idProduct;
   String? idInvoice;
-  // Invoice invoice;
   int? amount;
   int? promotion;
   bool? status;

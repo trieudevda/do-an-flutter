@@ -25,7 +25,8 @@ class PersonalPage extends StatefulWidget {
 class _PersonalPageState extends State<PersonalPage> {
   int index = 0;
   bool loading = false;
-  Widget btnIconStatus(BuildContext context, String image, String text, int value) {
+  Widget btnIconStatus(
+      BuildContext context, String image, String text, int value) {
     return TextButton(
       onPressed: () {
         setState(() {
@@ -41,13 +42,13 @@ class _PersonalPageState extends State<PersonalPage> {
             image,
             fit: BoxFit.cover,
             width: 40,
-            color: index == value ? Colors.red : Colors.black,
+            color: index == value ? Colors.blue : Colors.black,
           ),
           Text(
             text,
             textAlign: TextAlign.center,
             style:
-                TextStyle(color: index == value ? Colors.red : Colors.black),
+                TextStyle(color: index == value ? Colors.blue : Colors.black),
           )
         ],
       ),

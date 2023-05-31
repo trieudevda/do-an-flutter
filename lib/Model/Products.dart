@@ -1,6 +1,6 @@
 class Product {
-  String? id;
-  String? idCategoryProduct;
+  int? id;
+  int? idCategoryProduct;
   String? name;
   String? imgUrl;
   int? price;

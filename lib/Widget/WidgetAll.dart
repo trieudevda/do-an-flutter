@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'constAll.dart';
-
 bool checkOutApp = false;
 
 Widget searchAppbar(BuildContext context, TextEditingController search) {
@@ -13,16 +11,15 @@ Widget searchAppbar(BuildContext context, TextEditingController search) {
       labelText: "Tìm kiếm",
       hintText: "Tìm kiếm",
       suffixIcon: IconButton(
-        icon: FaIcon(FontAwesomeIcons.magnifyingGlass,),
-        color: colorActive,
+        icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
+        color: Colors.black,
         onPressed: () {},
       ),
-      border: OutlineInputBorder(
+      border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(25.0)),
-        // borderSide: BorderSide(color: colorActive),
       ),
       // hintStyle: TextStyle(color: Colors.black),
-      labelStyle: TextStyle(color: Colors.black12),
+      labelStyle: TextStyle(color: Colors.black),
     ),
   );
 }
@@ -45,7 +42,7 @@ BottomNavigationBar bottomNavigationBarAll(
       ),
     ],
     currentIndex: index,
-    selectedItemColor: colorActive,
+    selectedItemColor: Colors.blue,
     onTap: onItemTapped,
   );
 }

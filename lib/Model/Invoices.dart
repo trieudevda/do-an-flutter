@@ -1,6 +1,6 @@
 class Invoice {
-  String? id;
-  String? idUser;
+  int? id;
+  int? idUser;
   double? priceTotal;
   String? message;
   bool? status;
