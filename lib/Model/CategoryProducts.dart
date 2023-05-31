@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'const_model.dart';
 
 class CategoryProduct {
-  String? id;
+  int? id;
   String? name;
   bool? status;
   CategoryProduct({this.id, this.name, this.status});

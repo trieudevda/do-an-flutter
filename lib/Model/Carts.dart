@@ -1,7 +1,7 @@
 class Cart {
-  int? id;
-  int? idUser;
-  int? idProduct;
+  String? id;
+  String? idUser;
+  String? idProduct;
   double? amount;
   Cart({this.id, this.idUser, this.idProduct, this.amount});
 }

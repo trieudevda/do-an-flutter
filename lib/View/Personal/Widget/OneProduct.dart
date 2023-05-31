@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../Product/Detail/productDetail.dart';
+import 'dart:core';
 
 class OneProduct extends StatelessWidget {
   const OneProduct({Key? key}) : super(key: key);

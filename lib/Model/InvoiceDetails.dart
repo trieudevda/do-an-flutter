@@ -1,7 +1,13 @@
+import 'package:do_an_flutter/Model/Products.dart';
+
+import 'Invoices.dart';
+
 class InvoiceDetail {
   String? id;
+  // List<Product> product;
   String? idProduct;
   String? idInvoice;
+  // Invoice invoice;
   int? amount;
   int? promotion;
   bool? status;
@@ -12,6 +18,7 @@ class InvoiceDetail {
       this.amount,
       this.promotion,
       this.status});
+
   static List<InvoiceDetail> lstInvoiceDetail = [
     InvoiceDetail(
       id: '1',
@@ -38,5 +45,4 @@ class InvoiceDetail {
       status: true,
     ),
   ];
-
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../Model/InvoiceDetails.dart';
+import 'dart:core';
 
 class LanguagePage extends StatefulWidget {
   const LanguagePage({Key? key}) : super(key: key);
@@ -12,7 +14,7 @@ class _LanguagePageState extends State<LanguagePage> {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.black,
-        side: BorderSide(color: Colors.black12), // foreground border
+        side: BorderSide(color: Colors.black12),
       ),
       onPressed: () {},
       child: Padding(
@@ -36,11 +38,24 @@ class _LanguagePageState extends State<LanguagePage> {
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.check))],
       ),
       body: Container(
-        child: Column(
-          children: [
-            btnLanguage('Tiếng việt'),
-            btnLanguage('English'),
-          ],
+        // child: Column(
+        //   children: [
+        //     btnLanguage('Tiếng việt'),
+        //     btnLanguage('English'),
+        //   ],
+        child: ListView.builder(
+          itemCount: InvoiceDetail.lstInvoiceDetail.length,
+          itemBuilder: (context, position) {
+            print(InvoiceDetail.lstInvoiceDetail[position].id
+                .toString());
+            return Container(
+              child: Center(
+                child: Text(InvoiceDetail
+                    .lstInvoiceDetail[position].id
+                    .toString()),
+              ),
+            );
+          },
         ),
       ),
     );
