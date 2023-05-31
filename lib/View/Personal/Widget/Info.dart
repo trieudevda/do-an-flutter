@@ -32,14 +32,19 @@ class Info extends StatelessWidget {
           children: [
             Expanded(
               flex: 1,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image.network(
-                  'https://i.pinimg.com/originals/4f/dd/30/4fdd30c6a4e83370022b080095f09fe7.jpg',
-                  scale: 1,
-                  fit: BoxFit.cover,
-                  width: 100,
-                  height: 100,
+              child: GestureDetector(
+                onTap: (){
+                  print('expanded');
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.network(
+                    'https://i.pinimg.com/originals/4f/dd/30/4fdd30c6a4e83370022b080095f09fe7.jpg',
+                    scale: 1,
+                    fit: BoxFit.cover,
+                    width: 100,
+                    height: 100,
+                  ),
                 ),
               ),
             ),

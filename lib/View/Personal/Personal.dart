@@ -3,6 +3,7 @@ import 'package:do_an_flutter/View/Personal/Widget/Info.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../Model/User.dart';
 import '../../Widget/constAll.dart';
 import '../Auth/Login/Login.dart';
 import '../Auth/Register/Register.dart';
@@ -23,8 +24,7 @@ class PersonalPage extends StatefulWidget {
 class _PersonalPageState extends State<PersonalPage> {
   int index = 0;
   bool loading = false;
-  Widget btnIconStatus(
-      BuildContext context, String image, String text, int value) {
+  Widget btnIconStatus(BuildContext context, String image, String text, int value) {
     return TextButton(
       onPressed: () {
         setState(() {
@@ -40,13 +40,13 @@ class _PersonalPageState extends State<PersonalPage> {
             image,
             fit: BoxFit.cover,
             width: 40,
-            color: index == value ? Colors.blue : Colors.black,
+            color: index == value ? Colors.red : Colors.black,
           ),
           Text(
             text,
             textAlign: TextAlign.center,
             style:
-                TextStyle(color: index == value ? Colors.blue : Colors.black),
+                TextStyle(color: index == value ? Colors.red : Colors.black),
           )
         ],
       ),
@@ -150,6 +150,19 @@ class _PersonalPageState extends State<PersonalPage> {
           btnSetting(context, 'Địa chỉ', AddressPage()),
           btnSetting(context, 'Giới thiệu', IntroducePage()),
           btnSetting(context, 'Sản phẩm', lstItem()),
+          btnSetting(context, 'Sản phẩm', lstItem()),
+          TextButton(
+            style: TextButton.styleFrom(
+              //backgroundColor: Colors.white,
+              foregroundColor: Colors.red,
+            ),
+            onPressed: () {
+              User.signOutUser();
+            },
+            child: const Text('Đăng Xuất',
+                style: TextStyle(
+                    fontSize: 16)),
+          ),
         ],
       ),
     );
