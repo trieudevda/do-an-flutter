@@ -54,7 +54,12 @@ class ItemsWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ProductDetails()),
+                        );
+                      },
                       child: Container(
                         margin: EdgeInsets.all(10),
                         child: Image.asset(
@@ -75,12 +80,26 @@ class ItemsWidget extends StatelessWidget {
                           ),
                         )),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 10),
+                      padding: EdgeInsets.only(bottom: 5),
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           '29.999.999 đ',
-                          style: TextStyle(fontSize: 15, color: Colors.red),
+                          style: TextStyle(fontSize: 20, color: Colors.red),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 5),
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '32.000.000 đ',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.grey,
+                              decoration: TextDecoration.lineThrough),
                         ),
                       ),
                     )

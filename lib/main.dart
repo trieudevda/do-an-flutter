@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: LoginPage(),
-      // home: LayoutWidget(title: 'Bán hàng'),
+      //home: LayoutWidget(title: 'Bán hàng'),
       // builder: EasyLoading.init(),
     );
   }
