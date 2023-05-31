@@ -6,7 +6,6 @@ class Product {
   int? price;
   int? promotionPrice;
   String? description;
-  bool? isAdmin;
   bool? status;
   Product(
       {this.id,
@@ -16,6 +15,5 @@ class Product {
       this.price,
       this.promotionPrice,
       this.description,
-      this.isAdmin,
       this.status});
 }

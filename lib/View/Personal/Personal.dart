@@ -1,3 +1,4 @@
+import 'package:do_an_flutter/Model/CategoryProducts.dart';
 import 'package:do_an_flutter/View/Home/Home.dart';
 import 'package:do_an_flutter/View/Personal/Widget/Info.dart';
 import 'package:flutter/material.dart';
@@ -160,6 +161,18 @@ class _PersonalPageState extends State<PersonalPage> {
               User.signOutUser();
             },
             child: const Text('Đăng Xuất',
+                style: TextStyle(
+                    fontSize: 16)),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              //backgroundColor: Colors.white,
+              foregroundColor: Colors.red,
+            ),
+            onPressed: () {
+              CategoryProduct.createCategoryProduct();
+            },
+            child: const Text('Thêm danh muc',
                 style: TextStyle(
                     fontSize: 16)),
           ),

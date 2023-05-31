@@ -18,7 +18,6 @@ class InvoiceDetail {
       this.amount,
       this.promotion,
       this.status});
-
   static List<InvoiceDetail> lstInvoiceDetail = [
     InvoiceDetail(
       id: '1',
@@ -45,4 +44,5 @@ class InvoiceDetail {
       status: true,
     ),
   ];
+
 }
