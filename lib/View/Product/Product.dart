@@ -55,7 +55,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
             // Text("─────────Có thể bạn cũng thích─────────",textAlign: TextAlign.center,),
             // SizedBox(height: 30,),
             // ItemsWidget(),
-            // SizedBox(height: 20,),
+            SizedBox(height: 20,),
             Container(
               height: 50,
               decoration: BoxDecoration(
@@ -101,8 +101,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
               child: [
                 ItemsWidget(),
                 ItemsWidget(),
-                ProductDetails(),
-                //ItemsWidget(),
+                ItemsWidget(),
               ][_tabController.index],
             )
             // Center(
