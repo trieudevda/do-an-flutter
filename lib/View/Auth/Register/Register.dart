@@ -1,4 +1,9 @@
+import 'package:do_an_flutter/View/Auth/Login/Login.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../../Model/User.dart';
+import '../../../Widget/Layout.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -6,6 +11,28 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController _email=TextEditingController();
+  TextEditingController _pasword=TextEditingController();
+  TextEditingController _pasword1=TextEditingController();
+  bool _check=false;
+  void register(context){
+    if(_email.text!=''&&_pasword.text!=''&&_pasword.text.length>=8&&_pasword1.text!=''&&_pasword.text==_pasword1.text){
+      try{
+        User.createUser(_email.text, _pasword.text);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LayoutWidget(title: 'Bán hàng'),
+          ),
+        );
+        debugPrint('đăng ký thành công');
+      }catch(e){
+        debugPrint('đăng ký thất bại');
+      }
+    }else{
+      debugPrint('đăng ký thất bại');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,39 +53,57 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 SizedBox(height: 60),
                 TextFormField(
+                  controller: _email,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    labelText: "Tên đăng nhập",
+                    labelText: "Email",
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.person),
+                    suffixIcon: Icon(Icons.person),
                   ),
                 ),
+                // SizedBox(height: 20),
+                // TextFormField(
+                //   keyboardType: TextInputType.number,
+                //   decoration: InputDecoration(
+                //     labelText: "Số điện thoại",
+                //     border: OutlineInputBorder(),
+                //     prefixIcon: Icon(Icons.phone),
+                //   ),
+                // ),
                 SizedBox(height: 20),
                 TextFormField(
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    labelText: "Số điện thoại",
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.phone),
-                  ),
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  obscureText: true,
+                  controller: _pasword,
+                  obscureText: _check?false:true,
                   decoration: InputDecoration(
                     labelText: "Mật khẩu",
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                      icon: FaIcon(_check?FontAwesomeIcons.lockOpen:FontAwesomeIcons.lock),
+                      onPressed: (){
+                        setState(() {
+                          _check=!_check;
+                        });
+                      },
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 TextFormField(
-                  obscureText: true,
+                  controller: _pasword1,
+                  obscureText: _check?false:true,
                   decoration: InputDecoration(
                     labelText: "Nhập lại mật khẩu",
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                  icon: FaIcon(_check?FontAwesomeIcons.lockOpen:FontAwesomeIcons.lock),
+                  onPressed: (){
+                    setState(() {
+                      _check=!_check;
+                    });
+                  },
+                ),
                   ),
                 ),
                 SizedBox(
@@ -71,18 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       style: TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                                content: Text("Đăng ký thành công!"),
-                                actions: [
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: Text("Đóng")),
-                                ],
-                              ));
+                      register(context);
                     },
                     style: ButtonStyle(
                       backgroundColor:

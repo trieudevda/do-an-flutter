@@ -82,6 +82,7 @@ class User {
           email: email,
           password: password
       );
+      debugPrint('dang nhap thanh cong');
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

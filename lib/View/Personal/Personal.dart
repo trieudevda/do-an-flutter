@@ -4,7 +4,6 @@ import 'package:do_an_flutter/Model/Products.dart';
 import 'package:do_an_flutter/View/Home/Home.dart';
 import 'package:do_an_flutter/View/Personal/Widget/Info.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../Model/CategoryProducts.dart';
 import '../../Model/User.dart';
@@ -166,9 +165,9 @@ class _PersonalPageState extends State<PersonalPage> {
               foregroundColor: Colors.red,
             ),
             onPressed: () {
-              debugPrint(User.getUser().imgUrl??'dssdsds');
-              debugPrint('asfgdsgds');
-              // User.signOutUser(context);
+              // debugPrint(User.getUser().imgUrl??'dssdsds');
+              // debugPrint('asfgdsgds');
+              User.signOutUser(context);
             },
             child: const Text('Đăng Xuất',
                 style: TextStyle(
