@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../Model/User.dart';
 import '../EditProfile.dart';
 
 class Info extends StatelessWidget {
-  const Info({Key? key}) : super(key: key);
-
+  Info({Key? key,required this.user}) : super(key: key);
+  User user;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -39,7 +40,7 @@ class Info extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: Image.network(
-                    'https://i.pinimg.com/originals/4f/dd/30/4fdd30c6a4e83370022b080095f09fe7.jpg',
+                    user.imgUrl??'https://i.pinimg.com/originals/4f/dd/30/4fdd30c6a4e83370022b080095f09fe7.jpg',
                     scale: 1,
                     fit: BoxFit.cover,
                     width: 100,

@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:do_an_flutter/Model/Products.dart';
 import 'package:do_an_flutter/View/Home/Home.dart';
 import 'package:do_an_flutter/View/Personal/Widget/Info.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +28,7 @@ class PersonalPage extends StatefulWidget {
 class _PersonalPageState extends State<PersonalPage> {
   int index = 0;
   bool loading = false;
+
   Widget btnIconStatus(BuildContext context, String image, String text, int value) {
     return TextButton(
       onPressed: () {
@@ -53,7 +57,6 @@ class _PersonalPageState extends State<PersonalPage> {
       ),
     );
   }
-
   Widget btnSetting(BuildContext context, String text, Widget page) {
     return TextButton(
       onPressed: () {
@@ -106,6 +109,11 @@ class _PersonalPageState extends State<PersonalPage> {
       ],
     ),
   ];
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +121,7 @@ class _PersonalPageState extends State<PersonalPage> {
       color: colorBgAll,
       child: ListView(
         children: [
-          const Info(),
+          Info(user: User.getUser(),),
           const SizedBox(
             height: 15.0,
           ),
@@ -158,21 +166,11 @@ class _PersonalPageState extends State<PersonalPage> {
               foregroundColor: Colors.red,
             ),
             onPressed: () {
-              User.signOutUser();
+              debugPrint(User.getUser().imgUrl??'dssdsds');
+              debugPrint('asfgdsgds');
+              // User.signOutUser(context);
             },
             child: const Text('Đăng Xuất',
-                style: TextStyle(
-                    fontSize: 16)),
-          ),
-          TextButton(
-            style: TextButton.styleFrom(
-              //backgroundColor: Colors.white,
-              foregroundColor: Colors.red,
-            ),
-            onPressed: () {
-              CategoryProduct.createCategoryProduct();
-            },
-            child: const Text('Thêm danh muc',
                 style: TextStyle(
                     fontSize: 16)),
           ),

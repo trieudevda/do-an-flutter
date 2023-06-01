@@ -10,6 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController _email= TextEditingController();
+  TextEditingController _password= TextEditingController();
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -30,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: 50),
               TextFormField(
+                controller: _email,
                 decoration: InputDecoration(
                   labelText: "Tên đăng nhập",
                   border: OutlineInputBorder(),
@@ -39,6 +42,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 20),
               TextFormField(
                 obscureText: true,
+                controller: _password,
                 decoration: InputDecoration(
                   labelText: "Mật khẩu",
                   border: OutlineInputBorder(),
@@ -53,11 +57,19 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
-                    Navigator.push(
+                    if(_email.text!=''&&_email!=''){
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                LayoutWidget(title: 'Bán hàng')));
+                                LayoutWidget(title: 'Bán hàng'),
+                        ),
+                      );
+                      debugPrint('dang nhap thanh cong');
+                    }else{
+                      debugPrint('dang nhap that bai');
+                    }
+
                   },
                   style: ButtonStyle(
                     backgroundColor:

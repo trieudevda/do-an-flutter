@@ -1,3 +1,10 @@
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart';
+
+import 'const_model.dart';
+
 class Product {
   String? id;
   String? idCategoryProduct;
@@ -16,4 +23,32 @@ class Product {
       this.promotionPrice,
       this.description,
       this.status});
+  static FirebaseFirestore connectDB(){
+    return FirebaseFirestore.instance;
+  }
+  static Future<bool> createProduct()async{
+    try{
+      // get data
+      final dataload=await rootBundle.loadString('json/products.json');
+      // read data
+      List<dynamic> dataread=json.decode(dataload);
+      dataread.forEach((element) async {
+        // debugPrint(element['name']);
+        await connectDB().collection(productFB).doc().set({
+          "idCategoryProduct":element['idCategoryProduct'],
+          "name":element['name'],
+          "imgUrl":element['imgUrl'],
+          "price":element['price'],
+          "promotionPrice":element['promotionPrice'],
+          "description":element['description'],
+          "status":element['status'],
+        }).then((value) => debugPrint('them thanh công'))
+            .catchError((e)=>debugPrint('them tb'+e));
+      });
+      return true;
+    }catch(e){
+      debugPrint("createProduct: ${e}");
+    }
+    return false;
+  }
 }
