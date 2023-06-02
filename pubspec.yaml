@@ -41,6 +41,7 @@ dependencies:
   firebase_core: ^2.13.0
   firebase_auth: ^4.6.1
   cloud_firestore: ^4.7.1
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - images/slide/images.jpg
+    - images/slide/sale-khung-iphone-14-series-cuoi-nam-tai-topzone.jpg
+    - images/slide/dattruoc-111_1280x720-800-resize.jpg
+    - images/slide/Banner-web_1920x824-1-2.jpg
     - images/delivered.png
     - images/time.png
     - images/Waiting.png

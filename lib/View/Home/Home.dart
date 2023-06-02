@@ -1,10 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:do_an_flutter/Model/const_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:do_an_flutter/View/Home/Widget/Slide.dart';
-import 'Widget/ProductGrid.dart';
-
+import 'Widget/DiscountProductGrid.dart';
+import 'Widget/NewProductGrid.dart';
+import 'package:do_an_flutter/View/Home/Category.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import '../../Widget/WidgetAll.dart';
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -38,27 +41,79 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Column(
                     children: [
-                      Image.network(
-                        "https://cdn-icons-png.flaticon.com/512/1985/1985069.png",
-                        width: 40,
+                      GestureDetector(
+                        onTap: () {
+
+                        },
+                        child: Column(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Category()),
+                                );
+                              },
+                              child: Image.network(
+                                "https://cdn-icons-png.flaticon.com/512/1985/1985069.png",
+                                width: 40,
+                              ),
+                            ),
+                            Text('Smart Phone'),
+                          ],
+                        ),
                       ),
-                      Text('Smart Phone')
                     ],
                   ),
                   Column(
                     children: [
-                      Image.network(
-                          "https://cdn-icons-png.flaticon.com/512/2482/2482264.png",
-                          width: 40),
-                      Text('Laptop')
+                      GestureDetector(
+                        onTap: () {
+
+                        },
+                        child: Column(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Category()),
+                                );
+                              },
+                              child: Image.network(
+                                "https://cdn-icons-png.flaticon.com/512/2482/2482264.png",
+                                width: 40,
+                              ),
+                            ),
+                            Text('Laptop'),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                   Column(
                     children: [
-                      Image.network(
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZ1vt9mSYPEq-T-T25huFaSkoOVlTxh24koyTNEga0CX4fyP7rz1dc5ltxdlUBWOMaG4&usqp=CAU",
-                          width: 40),
-                      Text('Tablet')
+                      GestureDetector(
+                        onTap: () {
+                        },
+                        child: Column(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Category()),
+                                );
+                              },
+                              child: Image.network(
+                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZ1vt9mSYPEq-T-T25huFaSkoOVlTxh24koyTNEga0CX4fyP7rz1dc5ltxdlUBWOMaG4&usqp=CAU",
+                                width: 40,
+                              ),
+                            ),
+                            Text('Tablet'),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -66,38 +121,16 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-            // child: Padding(
-            //   padding: EdgeInsets.all(20),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //     children: [
-            //       Text('Sản Phẩm Mới Nhất',textAlign: TextAlign.center,style: TextStyle(color: Colors.redAccent,fontSize: 20),),
-            //       const ItemsWidget(),
-            //     ],
-            //   ),
-            // ),
             padding: EdgeInsets.all(40),
             margin: EdgeInsets.all(20),
-            // color: Colors.white,
             child: Text('Sản Phẩm Mới Nhất',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.redAccent, fontSize: 20)),
           ),
           Container(
-            child: ProductGrid(),
-            // ProductGrid(),
+            child: NewProductGrid(),
           ),
           Container(
-            // child: Padding(
-            //   padding: EdgeInsets.all(20),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //     children: [
-            //       Text('Sản Phẩm Mới Nhất',textAlign: TextAlign.center,style: TextStyle(color: Colors.redAccent,fontSize: 20),),
-            //       const ItemsWidget(),
-            //     ],
-            //   ),
-            // ),
             padding: EdgeInsets.all(40),
             margin: EdgeInsets.all(20),
             // color: Colors.white,
@@ -106,8 +139,7 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(color: Colors.redAccent, fontSize: 20)),
           ),
           Container(
-            child: ProductGrid(),
-            // ProductGrid(),
+            child: DiscountProductGrid(),
           ),
         ],
       ),

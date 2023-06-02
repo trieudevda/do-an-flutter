@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import '../../Widget/WidgetAll.dart';
+import '../Product/Detail/productDetail.dart';
+class Category extends StatefulWidget {
+  const Category({Key? key}) : super(key: key);
 
-import '../../Product/Detail/productDetail.dart';
+  @override
+  State<Category> createState() => _CategoryState();
+}
 
-class ProductGrid extends StatelessWidget {
+class _CategoryState extends State<Category> {
   List img = [
     'h1',
     'h2',
@@ -22,7 +28,6 @@ class ProductGrid extends StatelessWidget {
         color: const Color.fromARGB(255, 233, 231, 231),
       ),
       child: GridView.count(
-        physics: NeverScrollableScrollPhysics(),
         crossAxisCount: 2,
         shrinkWrap: true,
         childAspectRatio: (150 / 195),
@@ -62,17 +67,31 @@ class ProductGrid extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             img[i],
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(fontSize: 16),
                           ),
                         )),
                     Padding(
                       padding: EdgeInsets.only(bottom: 10),
-                      child: Container(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          '29.999.999 đ',
-                          style: TextStyle(fontSize: 15, color: Colors.red),
-                        ),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Giá gốc: 24.590.000 đ',
+                            style: TextStyle(
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.black38,
+                                fontSize: 14),
+                          ),
+                          SizedBox(width: 10,),
+                          Text(
+                              'Giá KM: 19.500.000 đ',
+                              style: TextStyle(color: Colors.red,fontSize: 14,fontWeight: FontWeight.bold)
+                          ),
+                          SizedBox(width: 10,),
+                          Text(
+                              'Loại SP: Smart Phone',
+                              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,)
+                          ),
+                        ],
                       ),
                     )
                   ],
