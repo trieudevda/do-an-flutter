@@ -14,7 +14,7 @@ class lstItem extends StatefulWidget {
 
 class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
+  TextEditingController _controllerSearch = TextEditingController();
   @override
   void initState() {
     _tabController = new TabController(length: 3, vsync: this);
@@ -30,6 +30,17 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.gear)),
+        ],
+        title: Container(
+          width: MediaQuery.of(context).size.width,
+          height: 40,
+          child: searchAppbar(context, _controllerSearch),
+        ),
+      ),
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
