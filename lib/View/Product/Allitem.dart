@@ -54,7 +54,12 @@ class ItemsWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ProductDetails()),
+                        );
+                      },
                       child: Container(
                         margin: EdgeInsets.all(10),
                         child: Image.asset(
