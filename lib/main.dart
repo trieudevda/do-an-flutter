@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'View/Auth/Login/Login.dart';
 import 'Widget/Layout.dart';
+import 'Widget/constAll.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -32,13 +34,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Đồ án Flutter',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Colors.white,
-        ),
+        colorScheme: colorAppbar
       ),
       home: login?LayoutWidget(title: 'Bán hàng'):LoginPage(),
       // home: LayoutWidget(title: 'Bán hàng'),
-      // builder: EasyLoading.init(),
+      builder: EasyLoading.init(),
     );
   }
 }

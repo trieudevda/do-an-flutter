@@ -5,3 +5,6 @@ const TextStyle titleAppbar = TextStyle(color: iconColorAppbar);
 Color colorBgAll=Colors.grey.shade200;
 Color colorActive=Colors.red;
 const double heightSizedbox=15;
+ColorScheme colorAppbar=ColorScheme.fromSwatch().copyWith(
+  primary: Colors.white,
+);

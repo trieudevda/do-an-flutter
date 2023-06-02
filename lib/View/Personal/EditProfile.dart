@@ -121,9 +121,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
             TextButton(
               child: Text("Thay đổi",style: titleAppbar,),
               onPressed: () {
-                setState(() {
-                  jsonUserUpdate['fullname']=_controllerFullName.text;
-                });
                 User.editProfile(
                   User(
                     fullName: _controllerFullName.text,
@@ -132,7 +129,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     email: _controllerEmail.text,
                     address: _controllerAddress.text,
                   )
-                );
+                ).then((value) => Navigator.pop(context));
               },
             ),
           ],

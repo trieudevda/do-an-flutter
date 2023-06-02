@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../Model/InvoiceDetails.dart';
 import 'dart:core';
 
+import '../../Widget/constAll.dart';
+
 class LanguagePage extends StatefulWidget {
   const LanguagePage({Key? key}) : super(key: key);
 
@@ -34,30 +36,20 @@ class _LanguagePageState extends State<LanguagePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chọn ngôn ngữ'),
+        iconTheme: IconThemeData(
+          color: iconColorAppbar,
+        ),
+        title: Text('Chọn ngôn ngữ',style: titleAppbar,),
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.check))],
       ),
       body: Container(
-        // child: Column(
-        //   children: [
-        //     btnLanguage('Tiếng việt'),
-        //     btnLanguage('English'),
-        //   ],
-        child: ListView.builder(
-          itemCount: InvoiceDetail.lstInvoiceDetail.length,
-          itemBuilder: (context, position) {
-            print(InvoiceDetail.lstInvoiceDetail[position].id
-                .toString());
-            return Container(
-              child: Center(
-                child: Text(InvoiceDetail
-                    .lstInvoiceDetail[position].id
-                    .toString()),
-              ),
-            );
-          },
-        ),
+        child: Column(
+          children: [
+            btnLanguage('Tiếng việt'),
+            btnLanguage('English'),
+          ],
       ),
+    )
     );
   }
 }

@@ -1,11 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:do_an_flutter/Model/const_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:do_an_flutter/View/Home/Widget/Slide.dart';
 import 'Widget/ProductGrid.dart';
-import '../../Widget/constAll.dart';
-import 'Widget/ProductGrid.dart';
 
-// import 'Widget/Slide.dart';
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -14,8 +13,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future<DocumentSnapshot<Map<String,dynamic>>> getProducts()async{
+    final data=await FirebaseFirestore.instance.collection(productFB).doc().get();
+    return data;
+  }
   @override
   Widget build(BuildContext context) {
+    getProducts();
+    debugPrint(getProducts().toString());
     return Container(
       child: ListView(
         children: [

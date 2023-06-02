@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../../../Model/User.dart';
 import '../EditProfile.dart';
@@ -18,7 +19,11 @@ class _InfoState extends State<Info> {
       future: User.getUser(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if(snapshot.connectionState==ConnectionState.waiting){
-          return Text('Loading....');
+          EasyLoading.show(status: 'Đang tải...') ;
+          return Container();
+        }
+        if(snapshot.connectionState!=ConnectionState.waiting){
+          EasyLoading.dismiss();
         }
         if(snapshot.connectionState==snapshot.hasError){
           return Text('Error: ${snapshot.error}');

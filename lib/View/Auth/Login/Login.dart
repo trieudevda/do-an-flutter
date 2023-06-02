@@ -38,95 +38,109 @@ class _LoginPageState extends State<LoginPage> {
     return WillPopScope(
       onWillPop: onWillPopScopeFalse,
       child: Scaffold(
-          body: SingleChildScrollView(
-              child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 80, vertical: 100),
-        child: Form(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                "images/icondn.png",
-                height: 200,
-                width: 200,
-              ),
-              SizedBox(height: 50),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                controller: _email,
-                decoration: InputDecoration(
-                  labelText: "Tên đăng nhập",
-                  border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.person),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Container(
+              width: MediaQuery.of(context).size.width*0.8,
+            padding: EdgeInsets.symmetric( vertical: 100),
+            child: Form(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "images/icondn.png",
+                      height: 200,
+                      width: 200,
+                    ),
+                    SizedBox(height: 50),
+                    TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _email,
+                      decoration: InputDecoration(
+                        labelText: "Tên đăng nhập",
+                        labelStyle:TextStyle(color: Colors.black),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(),
+                        suffixIcon: Icon(Icons.person,),
+                        suffixIconColor: Colors.black12,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      obscureText: _check?false:true,
+                      controller: _password,
+                      decoration: InputDecoration(
+                        labelText: "Mật khẩu",
+                        labelStyle:TextStyle(color: Colors.black),
+                        border: OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          icon:FaIcon(_check?FontAwesomeIcons.lockOpen:FontAwesomeIcons.lock),
+                          onPressed: (){
+                            setState(() {
+                              _check=!_check;
+                            });
+                          },
+                        ),
+                        suffixIconColor: Colors.black12,
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                    Container(
+                      child: ElevatedButton(
+                        child: Text(
+                          "Đăng Nhập",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        onPressed: () {
+                          login(context);
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.resolveWith<Color>((states) {
+                            return Colors.red;
+                          }),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Bạn chưa có tài khoản?'),
+                        TextButton(
+                          child: Text(
+                            "Đăng ký ngay",
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => RegisterPage()),
+                            );
+                          },
+                          // style: ButtonStyle(
+                          //   backgroundColor:
+                          //   MaterialStateProperty.resolveWith<Color>((states) {
+                          //     return Colors.red;
+                          //   }),
+                          // ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 20),
-              TextFormField(
-                obscureText: _check?false:true,
-                controller: _password,
-                decoration: InputDecoration(
-                  labelText: "Mật khẩu",
-                  border: OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    icon:FaIcon(_check?FontAwesomeIcons.lockOpen:FontAwesomeIcons.lock),
-                    onPressed: (){
-                      setState(() {
-                        _check=!_check;
-                      });
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(height: 40),
-              Container(
-                child: ElevatedButton(
-                  child: Text(
-                    "Đăng Nhập",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {
-                    login(context);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.resolveWith<Color>((states) {
-                      return Colors.red;
-                    }),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Text('Bạn chưa có tài khoản?'),
-              SizedBox(
-                height: 8,
-              ),
-              Container(
-                child: ElevatedButton(
-                  child: Text(
-                    "Đăng ký",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.resolveWith<Color>((states) {
-                      return Colors.red;
-                    }),
-                  ),
-                ),
-              ),
-            ],
+      ),
           ),
-        ),
-      ))),
+        )),
     );
   }
 }

@@ -95,7 +95,6 @@ class User {
   }
   static Future<bool> editProfile(User user)async{
     try{
-      debugPrint('name: ${user.toString()}');
       await connectDB().collection(userFB).doc(connectAuth().currentUser?.uid).update({
         'fullName':user.fullName,
         'sex':user.sex,
