@@ -1,15 +1,7 @@
-import 'dart:convert';
-
-import 'package:do_an_flutter/Model/Products.dart';
-import 'package:do_an_flutter/View/Home/Home.dart';
 import 'package:do_an_flutter/View/Personal/Widget/Info.dart';
 import 'package:flutter/material.dart';
-
-import '../../Model/CategoryProducts.dart';
 import '../../Model/User.dart';
 import '../../Widget/constAll.dart';
-import '../Auth/Login/Login.dart';
-import '../Auth/Register/Register.dart';
 import '../Product/Product.dart';
 import 'Address.dart';
 import 'EditProfile.dart';
@@ -113,14 +105,13 @@ class _PersonalPageState extends State<PersonalPage> {
     // TODO: implement initState
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       color: colorBgAll,
       child: ListView(
         children: [
-          Info(user: User.getUser(),),
+          Info(),
           const SizedBox(
             height: 15.0,
           ),
@@ -157,7 +148,6 @@ class _PersonalPageState extends State<PersonalPage> {
           btnSetting(context, 'Ngôn ngữ', LanguagePage()),
           btnSetting(context, 'Địa chỉ', AddressPage()),
           btnSetting(context, 'Giới thiệu', IntroducePage()),
-          btnSetting(context, 'Sản phẩm', lstItem()),
           btnSetting(context, 'Sản phẩm', lstItem()),
           TextButton(
             style: TextButton.styleFrom(

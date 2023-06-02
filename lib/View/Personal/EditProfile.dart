@@ -13,27 +13,6 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  Map<String,dynamic> data={
-    'imgUrl':'https://png.pngtree.com/png-vector/20230120/ourmid/pngtree-beauty-logo-design-png-image_6568470.png',
-    'fullname':'Thanh Triều',
-    'sex':'Nam',
-    'phone':'0365931247',
-    'email':'demo@gmail.com',
-    'address':'tp hcm',
-    'username':'trieupro',
-    'isAdmin':false,
-  };
-  final _user=User(
-    imgUrl: 'https://png.pngtree.com/png-vector/20230120/ourmid/pngtree-beauty-logo-design-png-image_6568470.png',
-    fullName: 'Nguyễn Thanh Triều',
-    sex: 'Nam',
-    phone: 0365931247,
-    email: 'demo@gmail.com',
-    address: 'tp hcm',
-    username: 'trieu.de.da',
-    status: true,
-    isAdmin: false,
-  );
   TextEditingController _controllerFullName=TextEditingController();
   TextEditingController _controllerSex=TextEditingController();
   TextEditingController _controllerPhone=TextEditingController();
@@ -43,11 +22,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controllerFullName.text=_user.fullName??'';
-    _controllerSex.text=_user.sex??'';
-    _controllerPhone.text=_user.phone.toString()??'';
-    _controllerEmail.text=_user.email??'';
-    _controllerAddress.text=_user.address??'';
   }
   Widget showinfo(String title, String value){
     return Padding(
@@ -61,14 +35,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ),
     );
   }
-  Widget btnEdit(BuildContext context,String value) {
+  Widget btnEdit(BuildContext context,String value,User user,jsonUserUpdate) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.black,
         side: BorderSide(color: Colors.black12), // foreground border
       ),
       onPressed: () {
-        showDialogUser(_user);
+        setState(() {
+          _controllerFullName.text=user.fullName??'';
+          _controllerSex.text=user.sex??'';
+          _controllerPhone.text=user.phone.toString()??'';
+          _controllerEmail.text=user.email??'';
+          _controllerAddress.text=user.address??'';
+        });
+        showDialogUser(user,jsonUserUpdate);
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -82,7 +63,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ),
     );
   }
-  Future<void> showDialogUser(User user){
+  Future<void> showDialogUser(User user,jsonUserUpdate){
     return showDialog(
         barrierDismissible: false,
         context: context,
@@ -140,7 +121,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
             TextButton(
               child: Text("Thay đổi",style: titleAppbar,),
               onPressed: () {
-                User.editProfile(_user);
+                setState(() {
+                  jsonUserUpdate['fullname']=_controllerFullName.text;
+                });
+                User.editProfile(
+                  User(
+                    fullName: _controllerFullName.text,
+                    sex: _controllerSex.text,
+                    phone: int.parse(_controllerPhone.text),
+                    email: _controllerEmail.text,
+                    address: _controllerAddress.text,
+                  )
+                );
               },
             ),
           ],
@@ -157,43 +149,52 @@ class _EditProfilePageState extends State<EditProfilePage> {
         ),
         title: const Text('Sửa hồ sơ',style: titleAppbar,),
       ),
-      body: Container(
-        color: colorBgAll,
-        child: Column(
-          children: [
-            Image.network(
-              data['imgUrl'],
-              fit: BoxFit.cover,
-              width: 100,
-              loadingBuilder: (BuildContext context, Widget child,
-                  ImageChunkEvent? loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                }
-                return Center(
-                  child: CircularProgressIndicator(
-                    value: loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes!
-                        : null,
+      body: FutureBuilder<dynamic>(
+        future: User.getUser(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if(snapshot.connectionState==ConnectionState.waiting){
+            return Text('Loading....');
+          }
+          if(snapshot.connectionState==snapshot.hasError){
+            return Text('Error: ${snapshot.error}');
+          }
+          return Container(
+            color: colorBgAll,
+            child: Column(
+              children: [
+                Image.network(
+                  snapshot.data['imgUrl']??'https://i.pinimg.com/originals/4f/dd/30/4fdd30c6a4e83370022b080095f09fe7.jpg',
+                  fit: BoxFit.cover,
+                  width: 100,
+                ),
+                showinfo('Tên',snapshot.data['fullName']??''),
+                SizedBox(
+                  height: heightSizedbox,
+                ),
+                showinfo('Giới tính',snapshot.data['sex']??''),
+                showinfo('Điện thoại',snapshot.data['phone'].toString()??''),
+                showinfo('Email',snapshot.data['email']??''),
+                showinfo('Địa chỉ',snapshot.data['address']??''),
+                showinfo('Tài khoản',snapshot.data['username']??''),
+                Center(
+                  child: btnEdit(
+                    context,
+                    'Sửa thông tin',
+                    User(
+                      fullName: snapshot.data['fullName'],
+                      sex: snapshot.data['sex'],
+                      phone: snapshot.data['phone'],
+                      email: snapshot.data['email'],
+                      address: snapshot.data['address'],
+                      username: snapshot.data['username'],
+                    ),
+                    snapshot.data
                   ),
-                );
-              },
+                ),
+              ],
             ),
-            showinfo('Tên',_user.fullName??''),
-            SizedBox(
-              height: heightSizedbox,
-            ),
-            showinfo('Giới tính',_user.sex??''),
-            showinfo('Điện thoại',_user.phone.toString()??''),
-            showinfo('Email',_user.email??''),
-            showinfo('Địa chỉ',_user.address??''),
-            showinfo('Tài khoản',_user.username??''),
-            Center(
-              child: btnEdit(context,'Sửa thông tin'),
-            ),
-          ],
-        ),
+          );
+        }
       ),
     );
   }

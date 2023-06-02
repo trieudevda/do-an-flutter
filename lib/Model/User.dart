@@ -95,42 +95,35 @@ class User {
   }
   static Future<bool> editProfile(User user)async{
     try{
-      await connectDB().collection(userFB).doc(connectAuth().currentUser?.uid).set({
-            'idUser':connectAuth().currentUser?.uid,
-            'imgUrl': user.imgUrl,
-            'fullName': user.fullName,
-            'sex': user.sex,
-            'phone': user.phone,
-            'email': user.email,
-            'address': user.address,
-            'username': user.username,
-            'status': true,
-            'isAdmin': false,
-          }).then((value) => debugPrint('them thanh công'))
-              .catchError((e)=>debugPrint('them tb'+e));
+      debugPrint('name: ${user.toString()}');
+      await connectDB().collection(userFB).doc(connectAuth().currentUser?.uid).update({
+        'fullName':user.fullName,
+        'sex':user.sex,
+        'phone':user.phone,
+        'email':user.email,
+        'address':user.address,
+      }).then((value) => debugPrint('them thanh cong'))
+      .catchError((e)=>debugPrint('them that bai'));
     }catch(e){
       print('loi');
       print(e);
     }
    return true;
   }
-  static User getUser(){
-    try{
-      FirebaseFirestore.instance
-          .collection(userFB)
-          .doc(connectAuth().currentUser?.uid)
-          .get()
-          .then((DocumentSnapshot documentSnapshot) {
-            if (documentSnapshot.exists) {
-              return User.fromJson(documentSnapshot.data() as Map<String,dynamic>);
-            } else {
-              debugPrint('Không có dữ liệu');
-            }
-          });
-    }catch(e){
-      debugPrint('get user fail: ${e}');
-    }
-    return User();
+  static Future<Map<String, dynamic>> getUser() async {
+    Map<String,dynamic> data={};
+   await connectDB()
+        .collection(userFB)
+        .doc(connectAuth().currentUser?.uid)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        data=documentSnapshot.data() as Map<String,dynamic>;
+      } else {
+        debugPrint('Không có dữ liệu');
+      }
+    }).catchError((e)=>debugPrint('loi: ${e.toString()}'));
+    return data;
   }
   static Future<void> signOutUser(context)async{
     try{

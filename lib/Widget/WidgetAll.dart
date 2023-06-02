@@ -11,7 +11,7 @@ Widget searchAppbar(BuildContext context, TextEditingController search) {
     controller: search,
     decoration: InputDecoration(
       labelText: "Tìm kiếm",
-      hintText: "Tìm kiếm",
+      // hintText: "Tìm kiếm",
       suffixIcon: IconButton(
         icon: FaIcon(FontAwesomeIcons.magnifyingGlass,),
         color: colorActive,
