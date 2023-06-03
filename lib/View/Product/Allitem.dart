@@ -53,6 +53,24 @@ class ItemsWidget extends StatelessWidget {
                       ),
                        child: Column(
                         children: [
+                          Align(
+                              alignment: Alignment.topRight,
+                              child: Column(
+                                children: [
+                                  if(products[i]['promotionPrice'] != 0)
+                                    Text('Sale', style: TextStyle(fontSize: 10, color: Colors.red),),
+                                ],
+                              )
+                          ),
+                          Align(
+                              alignment: Alignment.topRight,
+                              child: Column(
+                                children: [
+                                  if(products[i]['promotionPrice'] == 0)
+                                    Text('New', style: TextStyle(fontSize: 10, color: Colors.red),),
+                                ],
+                              )
+                          ),
                           InkWell(
                             onTap: () {
                               Navigator.push(
@@ -117,12 +135,38 @@ class ItemsWidget extends StatelessWidget {
                                     ),
                                   ),
                                 )
-                                  ],
-                                )
                               ],
+                              )
+                            ],
                             ),
-                          )
-                          
+                          ),
+                          Row(
+                            children: [
+                              if(products[i]['idCategoryProduct'] == 'fbyCDaL0ApIF89TrLHnC')
+                                Container(
+                                  child: Text(
+                                    'Loại: Điện thoại',
+                                    style: TextStyle(fontSize: 10),
+                                  ),
+                                ),
+                                if(products[i]['idCategoryProduct'] == '9K6Q38nm0zINxeaGLuqW')
+                                  Container(
+                                    child: Text(
+                                      'Loại: Laptop',
+                                      style: TextStyle(fontSize: 10),
+                                    ),
+                                  ),
+                                  if(products[i]['idCategoryProduct'] == 'Rfc2JQk0GRtACosc8s5a')
+                                  Container(
+                                    child: Text(
+                                      'Loại: Máy Tính Bảng',
+                                      style: TextStyle(fontSize: 10), textAlign: TextAlign.justify,
+                                    ),
+                                  ),
+                              
+                            ],
+                          ),
+
                         ],
                       ),
                       // child: Column(

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:product/item/allItems.dart';
@@ -19,13 +20,29 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
     final data=await FirebaseFirestore.instance.collection(productFB).doc().get();
     return data;
   }
+  //late List lazyList;
+  // ScrollController _scrollController =ScrollController();
+  // int _currentMax = 10;
   late TabController _tabController;
   TextEditingController _controllerSearch = TextEditingController();
   @override
   void initState() {
     _tabController = new TabController(length: 3, vsync: this);
     super.initState();
+    //lazyList = List.generate(_currentMax, (index) => "Item : ${index + 1}");
+    // _scrollController.addListener(() {
+    //   if(_scrollController.position.pixels == _scrollController.position.maxScrollExtent){
+    //     _getMoreList();
+    //   }
+    // });
   }
+  // _getMoreList(){
+  //   for(int i = _currentMax; i<_currentMax + 10; i++){
+  //     lazyList.add("Item : ${i + 1}");
+  //   }
+  //   _currentMax = _currentMax + 10;
+  //   setState(() {});
+  // }
 
   @override
   void dispose() {
@@ -53,7 +70,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 50,),
+            SizedBox(height: 20,),
             Container(
               decoration: BoxDecoration(
                   border: Border(
@@ -95,11 +112,24 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
             Expanded(
               child: TabBarView(
                 children: [
-                  Container(child: Center(child: Text('people'))),
+                  Container(
+                    // child: ListView.builder(
+                    //   controller: _scrollController,
+                    //   itemExtent: 60,
+                    //   itemBuilder: (context, index){
+                    //     if(index == lazyList.length){
+                    //       return CupertinoActivityIndicator();
+                    //     }
+                    //     return ItemsWidget();
+                    //   },
+                    //   itemCount: lazyList.length + 1,
+                    // )
+                    child: Text('haha'),
+                  ),
                   Container(
                     child: ListView(
-                      children: [
-                        
+                      children: [   
+                        SizedBox(height: 10,),
                         ItemsWidget(),  
                       ],
                     ),
