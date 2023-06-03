@@ -4,6 +4,7 @@ import 'package:do_an_flutter/View/Personal/Widget/OneProduct.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
+import '../../Model/Products.dart';
 import '../../Widget/constAll.dart';
 import 'Widget/OneInvoice.dart';
 
@@ -15,51 +16,60 @@ class InvoicePage extends StatefulWidget {
 }
 
 class _InvoicePagePageState extends State<InvoicePage> {
-
   @override
   Widget build(BuildContext context) {
-    List<Widget> _widget=[];
+    List<Widget> _widget = [];
     // Invoice.createInvoice([
-      // {"id":"3xzQHhHm7bsZVw2Khrcc","amount":'2'},
-      // {"id":"4GXGJmT3T13ZQhRwiF31","amount":'3'},
-      // {"id":"5WE2bOqWCLCESCgyTeLC","amount":'2'},
+    // {"id":"3xzQHhHm7bsZVw2Khrcc","amount":'2'},
+    // {"id":"4GXGJmT3T13ZQhRwiF31","amount":'3'},
+    // {"id":"5WE2bOqWCLCESCgyTeLC","amount":'2'},
     //   {"id":"5c7VdZjPY5YCywp2iVkm","amount":'3'},
     //   {"id":"5fPFThtgL0rGf77DYEWx","amount":'2'},
     //   {"id":"69L5t7pw4Vx4osbIMayH","amount":'3'},
     // ], 'dien thoai, tablet, pc');
+    // Invoice.getInvoice();
+    Product.getProduct('0mVatnv6aaNgi9975NQV');
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: iconColorAppbar,
         ),
-        title: Text('hoa don',style: titleAppbar,),
+        title: Text(
+          'hoa don',
+          style: titleAppbar,
+        ),
       ),
-      body: FutureBuilder<QuerySnapshot>(
+      body: FutureBuilder<dynamic>(
         future: Invoice.getInvoice(),
-        builder: (BuildContext context, snapshot){
-          if(snapshot.connectionState==ConnectionState.waiting){
-            EasyLoading.show(status: 'Đang tải...') ;
+        builder: (BuildContext context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            EasyLoading.show(status: 'Đang tải...');
             return Container();
           }
-          if(snapshot.connectionState!=ConnectionState.waiting){
+          if (snapshot.connectionState != ConnectionState.waiting) {
             EasyLoading.dismiss();
           }
-          if(snapshot.connectionState==snapshot.hasError){
+          if (snapshot.connectionState == snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           }
-          snapshot.data?.docs.map((e){
-            debugPrint('gia tri:${e.toString()}');
+          final data=snapshot.data as List<Object?>;
+          debugPrint(data.toString());
+          data.forEach((element) {
+            Map<String, dynamic> data1=element as Map<String, dynamic>;
+              debugPrint('gia tri:${data.toString()}');
           });
-          final data=snapshot.data?.docs;
-          for(var index in data!){
-            _widget.add(
-              // Text(index['priceTotal'].toString()),
-              OneInvoice(),
-            );
-          }
-          return ListView(
-            children: _widget
-          );
+          // snapshot.data?.docs.map((e) {
+          //   debugPrint('gia tri:${e.toString()}');
+          // });
+          // final data = snapshot.data?.docs;
+          // for (var index in data!) {
+          //   debugPrint(index.toString());
+          //   _widget.add(
+          //     // Text(index['priceTotal'].toString()),
+          //     OneInvoice(),
+          //   );
+          // }
+          return ListView(children: _widget);
         },
       ),
     );

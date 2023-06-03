@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:do_an_flutter/View/Home/Home.dart';
 import 'package:do_an_flutter/View/Personal/Personal.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../View/Cart/GioHang.dart';
@@ -31,6 +33,7 @@ class _LayoutWidgetState extends State<LayoutWidget> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(FirebaseAuth.instance.currentUser?.uid);
     return WillPopScope(
       onWillPop: onWillPopScopeFalse,
       child: Scaffold(

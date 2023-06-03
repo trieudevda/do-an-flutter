@@ -59,12 +59,33 @@ class User {
   static FirebaseAuth connectAuth(){
     return FirebaseAuth.instance;
   }
-  static Future<bool> createUser(String email,String password) async{
+  static Future<bool> createUser(String email,String password,String name,String sex,String phone,String address,context) async{
     try{
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
-      );
+      ).then((value){
+        connectDB().collection(userFB).doc(connectAuth().currentUser?.uid).set({
+          "imgUrl": 'https://png.pngtree.com/png-vector/20230120/ourmid/pngtree-beauty-logo-design-png-image_6568470.png',
+          "fullName": name,
+          "sex":sex,
+          "phone":int.parse(phone),
+          "email":email,
+          "address":address,
+          "username":email,
+          "isAdmin":false,
+          "status":true,
+        }).then((value) {
+          debugPrint('them profife thanh công');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LayoutWidget(title: 'Bán hàng'),
+            ),
+          );
+        })
+            .catchError((e)=>debugPrint('them profife tb'+e));
+      });
       return true;
     }on FirebaseAuthException catch(e){
       if (e.code == 'weak-password') {
@@ -127,7 +148,18 @@ class User {
       } else {
         debugPrint('Không có dữ liệu');
       }
-    }).catchError((e)=>debugPrint('loi: ${e.toString()}'));
+    }).catchError((e){
+      data= {'imgUrl': '',
+        'fullName': '',
+        'sex': '',
+        'phone': 0,
+        'email': '',
+        'address':'',
+        'username': '',
+        'isAdmin': '',
+        'status': 'status',};
+     debugPrint('loi: ${e.toString()}');
+   });
     return data;
   }
   static Future<void> signOutUser(context)async{

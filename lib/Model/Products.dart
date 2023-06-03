@@ -52,4 +52,22 @@ class Product {
     }
     return false;
   }
+  static Future<Map<String, dynamic>> getProduct(String id) async {
+    Map<String,dynamic> data={};
+    await connectDB()
+        .collection(userFB)
+        .doc(id)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        data=documentSnapshot.data() as Map<String,dynamic>;
+        debugPrint(data.toString());
+      } else {
+        debugPrint('Không có dữ liệu');
+      }
+    }).catchError((e){
+      debugPrint('loi: ${e.toString()}');
+    });
+    return data;
+  }
 }

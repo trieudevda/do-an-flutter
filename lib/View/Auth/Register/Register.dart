@@ -14,17 +14,25 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _email=TextEditingController();
   TextEditingController _pasword=TextEditingController();
   TextEditingController _pasword1=TextEditingController();
+  TextEditingController _fullName=TextEditingController();
+  TextEditingController _phone=TextEditingController();
+  TextEditingController _address=TextEditingController();
+  String dropdownvalue = 'Nam';
+  var items = [
+    'Nam',
+    'Nữ'
+  ];
   bool _check=false;
   void register(context){
-    if(_email.text!=''&&_pasword.text!=''&&_pasword.text.length>=8&&_pasword1.text!=''&&_pasword.text==_pasword1.text){
+    if(_email.text!=''&&_pasword.text!=''&&_fullName.text!=''&&int.parse(_phone.text)>0&&_address.text!=''&&_pasword.text.length>=8&&_pasword1.text!=''&&_pasword.text==_pasword1.text){
       try{
-        User.createUser(_email.text, _pasword.text)
-        .then((value) => Navigator.push(
+        User.createUser(_email.text, _pasword.text,_fullName.text,dropdownvalue,_phone.text,_address.text,context);
+        Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => LayoutWidget(title: 'Bán hàng'),
           ),
-        ));
+        );
 
         debugPrint('đăng ký thành công');
       }catch(e){
@@ -60,26 +68,70 @@ class _RegisterPageState extends State<RegisterPage> {
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: "Email",
-                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(),
                       suffixIcon: Icon(Icons.person),
                     ),
                   ),
-                  // SizedBox(height: 20),
-                  // TextFormField(
-                  //   keyboardType: TextInputType.number,
-                  //   decoration: InputDecoration(
-                  //     labelText: "Số điện thoại",
-                  //     border: OutlineInputBorder(),
-                  //     prefixIcon: Icon(Icons.phone),
-                  //   ),
-                  // ),
+                  SizedBox(height: 20),
+                  TextFormField(
+                    controller: _fullName,
+                    decoration: InputDecoration(
+                      labelText: "Họ tên",
+                      enabledBorder: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(),
+                      suffixIcon: Icon(Icons.person),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 50,
+                    child: DropdownButton(
+                      value: dropdownvalue,
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      items: items.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownvalue = newValue!;
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  TextFormField(
+                    keyboardType: TextInputType.number,
+                    controller: _phone,
+                    decoration: InputDecoration(
+                      labelText: "Số điện thoại",
+                      enabledBorder: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(),
+                      suffixIcon: Icon(Icons.phone),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  TextFormField(
+                    controller: _address,
+                    decoration: InputDecoration(
+                      labelText: "Địa chỉ",
+                      enabledBorder: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(),
+                      suffixIcon: Icon(Icons.home),
+                    ),
+                  ),
                   SizedBox(height: 20),
                   TextFormField(
                     controller: _pasword,
                     obscureText: _check?false:true,
                     decoration: InputDecoration(
                       labelText: "Mật khẩu",
-                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(),
                       suffixIcon: IconButton(
                         icon: FaIcon(_check?FontAwesomeIcons.lockOpen:FontAwesomeIcons.lock),
                         onPressed: (){
@@ -98,7 +150,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     obscureText: _check?false:true,
                     decoration: InputDecoration(
                       labelText: "Nhập lại mật khẩu",
-                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(),
                       suffixIcon: IconButton(
                     icon: FaIcon(_check?FontAwesomeIcons.lockOpen:FontAwesomeIcons.lock),
                     onPressed: (){

@@ -22,7 +22,8 @@ class _PersonalPageState extends State<PersonalPage> {
   int index = 0;
   bool loading = false;
 
-  Widget btnIconStatus(BuildContext context, String image, String text, int value) {
+  Widget btnIconStatus(
+      BuildContext context, String image, String text, int value) {
     return TextButton(
       onPressed: () {
         setState(() {
@@ -43,13 +44,13 @@ class _PersonalPageState extends State<PersonalPage> {
           Text(
             text,
             textAlign: TextAlign.center,
-            style:
-                TextStyle(color: index == value ? Colors.red : Colors.black),
+            style: TextStyle(color: index == value ? Colors.red : Colors.black),
           )
         ],
       ),
     );
   }
+
   Widget btnSetting(BuildContext context, String text, Widget page) {
     return TextButton(
       onPressed: () {
@@ -102,11 +103,12 @@ class _PersonalPageState extends State<PersonalPage> {
       ],
     ),
   ];
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -139,7 +141,12 @@ class _PersonalPageState extends State<PersonalPage> {
               foregroundColor: Colors.red,
             ),
             onPressed: () {
-              print(index);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => InvoicePage(),
+                ),
+              );
             },
             child: const Text('Xem thêm >',
                 style: TextStyle(
@@ -150,7 +157,6 @@ class _PersonalPageState extends State<PersonalPage> {
           btnSetting(context, 'Ngôn ngữ', LanguagePage()),
           btnSetting(context, 'Địa chỉ', AddressPage()),
           btnSetting(context, 'Giới thiệu', IntroducePage()),
-          btnSetting(context, 'Chi tiết sản phẩm', InvoicePage()),
           TextButton(
             style: TextButton.styleFrom(
               //backgroundColor: Colors.white,
@@ -159,9 +165,7 @@ class _PersonalPageState extends State<PersonalPage> {
             onPressed: () {
               User.signOutUser(context);
             },
-            child: const Text('Đăng Xuất',
-                style: TextStyle(
-                    fontSize: 16)),
+            child: const Text('Đăng Xuất', style: TextStyle(fontSize: 16)),
           ),
         ],
       ),

@@ -18,7 +18,6 @@ Future<void> main() async {
     if (user == null) {
       runApp(MyApp(login: false,));
     } else {
-      // print(user);
       runApp(MyApp(login: true,));
     }
   });
