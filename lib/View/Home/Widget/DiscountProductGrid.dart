@@ -29,7 +29,7 @@ class DiscountProductGrid extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
               shrinkWrap: true,
-              childAspectRatio: (150 / 195),
+              childAspectRatio: (150 / 230),
               children: [
                 for (int i = 0; i < filteredProducts.length; i++)
                   // if (double.parse(filteredProducts[i]['promotionPrice']) > 0)

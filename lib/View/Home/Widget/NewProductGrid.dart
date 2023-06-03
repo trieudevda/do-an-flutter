@@ -28,7 +28,7 @@ class NewProductGrid extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
               shrinkWrap: true,
-              childAspectRatio: (150 / 215),
+              childAspectRatio: (150 / 230),
               children: [
                 for (int i = 0; i < products.length; i++)
                   GestureDetector(
