@@ -1,5 +1,6 @@
 import 'package:do_an_flutter/View/Personal/Widget/Info.dart';
 import 'package:flutter/material.dart';
+import '../../Model/Invoices.dart';
 import '../../Model/User.dart';
 import '../../Widget/constAll.dart';
 import '../Product/Product.dart';
@@ -7,6 +8,7 @@ import 'Address.dart';
 import 'EditProfile.dart';
 import 'Introduce.dart';
 import 'Language.dart';
+import 'Invoice.dart';
 import 'Widget/OneProduct.dart';
 
 class PersonalPage extends StatefulWidget {
@@ -148,15 +150,13 @@ class _PersonalPageState extends State<PersonalPage> {
           btnSetting(context, 'Ngôn ngữ', LanguagePage()),
           btnSetting(context, 'Địa chỉ', AddressPage()),
           btnSetting(context, 'Giới thiệu', IntroducePage()),
-          btnSetting(context, 'Sản phẩm', lstItem()),
+          btnSetting(context, 'Chi tiết sản phẩm', InvoicePage()),
           TextButton(
             style: TextButton.styleFrom(
               //backgroundColor: Colors.white,
               foregroundColor: Colors.red,
             ),
             onPressed: () {
-              // debugPrint(User.getUser().imgUrl??'dssdsds');
-              // debugPrint('asfgdsgds');
               User.signOutUser(context);
             },
             child: const Text('Đăng Xuất',

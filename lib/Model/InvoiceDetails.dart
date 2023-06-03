@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:do_an_flutter/Model/Products.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 import 'Invoices.dart';
+import 'const_model.dart';
 
 class InvoiceDetail {
   String? id;
@@ -9,40 +13,31 @@ class InvoiceDetail {
   String? idInvoice;
   // Invoice invoice;
   int? amount;
-  int? promotion;
   bool? status;
   InvoiceDetail(
       {this.id,
       this.idProduct,
       this.idInvoice,
       this.amount,
-      this.promotion,
       this.status});
 
-  static List<InvoiceDetail> lstInvoiceDetail = [
-    InvoiceDetail(
-      id: '1',
-      idProduct: 'ửewrwer',
-      idInvoice: 'sdsdsdsd',
-      amount: 10,
-      promotion: 1,
-      status: true,
-    ),
-    InvoiceDetail(
-      id: '2',
-      idProduct: 'ửewrwer',
-      idInvoice: 'sdsdsdsd',
-      amount: 10,
-      promotion: 1,
-      status: true,
-    ),
-    InvoiceDetail(
-      id: '3',
-      idProduct: 'ửewrwer',
-      idInvoice: 'sdsdsdsd',
-      amount: 10,
-      promotion: 1,
-      status: true,
-    ),
-  ];
+  static FirebaseFirestore connectDB(){
+    return FirebaseFirestore.instance;
+  }
+  static FirebaseAuth connectAuth(){
+    return FirebaseAuth.instance;
+  }
+  static Future<void> createInvoiceDetail(List<Map<String,String>> product,String idInvoice)async{
+    for(var index in product){
+      await connectDB().collection(invoiceDetailFB).add({
+        "idUser":connectAuth().currentUser?.uid,
+        "idProduct":index['id'],
+        "idInvoice":idInvoice,
+        "amount":index['amount'],
+        "status":true,
+      })
+          .then((value) => debugPrint('them chi tiet hoa don thanh cong'))
+          .catchError((e)=>debugPrint('them chi tiet hoa don that bai'));
+    }
+  }
 }

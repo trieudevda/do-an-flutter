@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../View/Product/Product.dart';
 import 'constAll.dart';
 
 bool checkOutApp = false;
 
 Widget searchAppbar(BuildContext context, TextEditingController search) {
-  return TextField(
+  return TextFormField(
     onChanged: (value) {},
     controller: search,
     decoration: InputDecoration(
       labelText: "Tìm kiếm",
-      // hintText: "Tìm kiếm",
-      suffixIcon: IconButton(
-        icon: FaIcon(FontAwesomeIcons.magnifyingGlass,),
-        color: colorActive,
-        onPressed: () {},
-      ),
-      border: OutlineInputBorder(
+      enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(25.0)),
-        // borderSide: BorderSide(color: colorActive),
+        borderSide: BorderSide(color: colorActive),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(25.0)),
+        borderSide: BorderSide(color: colorActive),
       ),
       // hintStyle: TextStyle(color: Colors.black),
       labelStyle: TextStyle(color: Colors.black12),
+      suffixIcon: IconButton(
+        icon: FaIcon(FontAwesomeIcons.magnifyingGlass,),
+        color: colorActive,
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => lstItem()));
+        },
+      ),
     ),
   );
 }

@@ -19,13 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   void login(context) {
     if (_email.text != '' && _email != '') {
       // EasyLoading.show(status: 'Đang tải...');
-      User.signInUser(_email.text, _password.text);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => LayoutWidget(title: 'Bán hàng'),
-        ),
-      );
+      User.signInUser(_email.text, _password.text,context);
       // EasyLoading.removeAllCallbacks();
     } else {
       // EasyLoading.removeAllCallbacks();

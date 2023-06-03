@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../View/Auth/Login/Login.dart';
+import '../Widget/Layout.dart';
 import 'const_model.dart';
 
 class User {
@@ -76,13 +77,18 @@ class User {
     }
     return false;
   }
-  static Future<bool> signInUser(String email,String password)async{
+  static Future<bool> signInUser(String email,String password,context)async{
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email,
           password: password
       );
-      debugPrint('dang nhap thanh cong');
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LayoutWidget(title: 'Bán hàng'),
+        ),
+      );
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

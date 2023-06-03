@@ -18,13 +18,14 @@ class _RegisterPageState extends State<RegisterPage> {
   void register(context){
     if(_email.text!=''&&_pasword.text!=''&&_pasword.text.length>=8&&_pasword1.text!=''&&_pasword.text==_pasword1.text){
       try{
-        User.createUser(_email.text, _pasword.text);
-        Navigator.push(
+        User.createUser(_email.text, _pasword.text)
+        .then((value) => Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => LayoutWidget(title: 'Bán hàng'),
           ),
-        );
+        ));
+
         debugPrint('đăng ký thành công');
       }catch(e){
         debugPrint('đăng ký thất bại');
