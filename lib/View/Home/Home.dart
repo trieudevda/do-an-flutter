@@ -5,9 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:do_an_flutter/View/Home/Widget/Slide.dart';
 import 'Widget/DiscountProductGrid.dart';
 import 'Widget/NewProductGrid.dart';
+import 'Widget/RecommendProductGrid.dart';
 import 'package:do_an_flutter/View/Home/Category.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../../Widget/WidgetAll.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -121,25 +123,121 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(40),
+            padding: EdgeInsets.all(20),
             margin: EdgeInsets.all(20),
             child: Text('Sản Phẩm Mới Nhất',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.redAccent, fontSize: 20)),
+                style: TextStyle(color: Colors.redAccent, fontSize: 20, fontWeight: FontWeight.bold)
+            ),
           ),
           Container(
             child: NewProductGrid(),
           ),
           Container(
-            padding: EdgeInsets.all(40),
+            padding: EdgeInsets.only(bottom: 10),
+            margin: EdgeInsets.all(0),
+            color: Color.fromARGB(255, 232, 230, 230),
+            alignment: Alignment.topRight,
+            child: Column(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Category()),
+                    );
+                  },
+                  child: Container(
+                      width: 100,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.all(15),
+                      child: Text(
+                        'Xem thêm',
+                        style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline,),
+                      )
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(20),
             margin: EdgeInsets.all(20),
             // color: Colors.white,
-            child: Text('Sản Phẩm Khuyến Mãi',
+            child: Text('Đang Khuyến Mãi',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.redAccent, fontSize: 20)),
+                style: TextStyle(color: Colors.redAccent, fontSize: 20, fontWeight: FontWeight.bold)
+            ),
           ),
           Container(
             child: DiscountProductGrid(),
+          ),
+          Container(
+            padding: EdgeInsets.only(bottom: 10),
+            margin: EdgeInsets.all(0),
+            color: Color.fromARGB(255, 232, 230, 230),
+            alignment: Alignment.topRight,
+            child: Column(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Category()),
+                    );
+                  },
+                  child: Container(
+                      width: 100,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.all(15),
+                      child: Text(
+                        'Xem thêm',
+                        style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline,),
+                      )
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            color: Colors.white,
+            margin: EdgeInsets.all(10),
+            child: Container(
+              child: Text('Có thể bạn cũng thích',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(color: Colors.redAccent, fontSize: 20,fontWeight: FontWeight.bold)
+              ),
+            ),
+          ),
+          Container(
+            child: RecommendProductGrid(),
+          ),
+          Container(
+            padding: EdgeInsets.only(bottom: 10),
+            margin: EdgeInsets.all(0),
+            color: Color.fromARGB(255, 232, 230, 230),
+            alignment: Alignment.topRight,
+            child: Column(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Category()),
+                    );
+                  },
+                  child: Container(
+                      width: 100,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.all(15),
+                      child: Text(
+                        'Xem thêm',
+                        style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline,),
+                      )
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
