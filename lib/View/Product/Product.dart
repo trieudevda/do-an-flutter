@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:product/item/allItems.dart';
 
+import '../../Model/const_model.dart';
 import '../../Widget/WidgetAll.dart';
 import 'Allitem.dart';
 
@@ -13,6 +15,10 @@ class lstItem extends StatefulWidget {
 }
 
 class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
+  Future<DocumentSnapshot<Map<String,dynamic>>> getProducts()async{
+    final data=await FirebaseFirestore.instance.collection(productFB).doc().get();
+    return data;
+  }
   late TabController _tabController;
   TextEditingController _controllerSearch = TextEditingController();
   @override
@@ -29,6 +35,8 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    getProducts();
+    debugPrint(getProducts().toString());
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -91,7 +99,8 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
                   Container(
                     child: ListView(
                       children: [
-                        ItemsWidget(),
+                        
+                        ItemsWidget(),  
                       ],
                     ),
                   ),
