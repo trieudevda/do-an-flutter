@@ -4,18 +4,18 @@ import 'package:do_an_flutter/Model/const_model.dart';
 import '../../Product/Detail/productDetail.dart';
 import 'package:intl/intl.dart';
 
-class NewProductGrid extends StatelessWidget {
-  Future<QuerySnapshot<Map<String, dynamic>>> getProducts() async {
+class RecommendProductGrid extends StatelessWidget {
+  Future<QuerySnapshot<Map<String, dynamic>>> getRecommendProducts() async {
     final data = await FirebaseFirestore.instance
         .collection(productFB)
-        .limit(8)
+        .limit(6)
         .get();
     return data;
   }
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
-      future: getProducts(),
+      future: getRecommendProducts(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final products = snapshot.data!.docs;
@@ -78,40 +78,31 @@ class NewProductGrid extends StatelessWidget {
                             child: Column(
                               children: [
                                 (products[i]['promotionPrice'] == 0)
-                                    ? Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Text(
-                                    'Giá: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    ? Text(
+                                  'Giá: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 )
                                     : Column(
                                   children: [
-                                    Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      child: Text(
-                                        'Giá gốc: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
-                                        style: TextStyle(
-                                          decoration:
-                                          TextDecoration.lineThrough,
-                                          color: Colors.black38,
-                                          fontSize: 13,
-                                        ),
+                                    Text(
+                                      'Giá gốc: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                      style: TextStyle(
+                                        decoration:
+                                        TextDecoration.lineThrough,
+                                        color: Colors.black38,
+                                        fontSize: 13,
                                       ),
                                     ),
                                     SizedBox(width: 10),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      child: Text(
-                                        'Giá KM: ${NumberFormat.currency(locale: 'vi').format(products[i]['promotionPrice']).toString()}',
-                                        style: TextStyle(
-                                          color: Colors.red,
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                    Text(
+                                      'Giá KM: ${NumberFormat.currency(locale: 'vi').format(products[i]['promotionPrice']).toString()}',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ],
