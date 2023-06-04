@@ -40,33 +40,77 @@ class SpGiohang extends StatelessWidget {
                     height: 105,
                     child: Center(
                         child: Column(children: [
-                      Text(
-                        '$ten',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                          child: Text(
-                            'đ$gia',
+                          Text(
+                            '$ten',
                             style: TextStyle(
-                                color: Colors.red,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ))
-                    ])))
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                          Container(
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                              child: Text(
+                                'đ$gia',
+                                style: TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ))
+                        ])))
               ],
             ),
             Container(
-                padding: EdgeInsets.fromLTRB(50, 20, 0, 0),
-                child: Row(
-                  children: [
-                    Text('Số lượng: $soluong'),
-                    Container(
-                        padding: EdgeInsets.fromLTRB(100, 0, 0, 0),
-                        child: Text(''))
-                  ],
-                ))
+                padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                child: Row(children: [
+                  Text('Số lượng: soluong'),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.white, // background
+                          onPrimary: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  width: 1, // thickness
+                                  color: Colors.black // color
+                              ),
+                              // border radius
+                              borderRadius: BorderRadius.circular(0.0)),
+                        ),
+                        child: Text('-'),
+                      )),
+                  Container(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.white, // background
+                          onPrimary: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  width: 1, // thickness
+                                  color: Colors.black // color
+                              ),
+                              // border radius
+                              borderRadius: BorderRadius.circular(0.0)),
+                        ),
+                        child: Text('1'),
+                      )),
+                  Container(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.white, // background
+                          onPrimary: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  width: 1, // thickness
+                                  color: Colors.black // color
+                              ),
+                              // border radius
+                              borderRadius: BorderRadius.circular(0)),
+                        ),
+                        child: Text('+'),
+                      )),
+                ])),
           ],
         ));
   }

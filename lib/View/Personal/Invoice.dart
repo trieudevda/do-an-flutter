@@ -28,6 +28,7 @@ class _InvoicePagePageState extends State<InvoicePage> {
     //   {"id":"69L5t7pw4Vx4osbIMayH","amount":'3'},
     // ], 'dien thoai, tablet, pc');
     // Invoice.getInvoice();
+
     Product.getProduct('0mVatnv6aaNgi9975NQV');
     return Scaffold(
       appBar: AppBar(
@@ -35,7 +36,7 @@ class _InvoicePagePageState extends State<InvoicePage> {
           color: iconColorAppbar,
         ),
         title: Text(
-          'hoa don',
+          'Đơn hàng',
           style: titleAppbar,
         ),
       ),
@@ -53,22 +54,12 @@ class _InvoicePagePageState extends State<InvoicePage> {
             return Text('Error: ${snapshot.error}');
           }
           final data=snapshot.data as List<Object?>;
-          debugPrint(data.toString());
           data.forEach((element) {
             Map<String, dynamic> data1=element as Map<String, dynamic>;
-              debugPrint('gia tri:${data.toString()}');
+              _widget.add(
+                OneInvoice(invoice: Invoice(id: data1['id'],idUser: data1['data']['idUser'],priceTotal: double.parse(data1['data']['priceTotal']),message: data1['data']['message'],status: data1['data']['status'],),),
+              );
           });
-          // snapshot.data?.docs.map((e) {
-          //   debugPrint('gia tri:${e.toString()}');
-          // });
-          // final data = snapshot.data?.docs;
-          // for (var index in data!) {
-          //   debugPrint(index.toString());
-          //   _widget.add(
-          //     // Text(index['priceTotal'].toString()),
-          //     OneInvoice(),
-          //   );
-          // }
           return ListView(children: _widget);
         },
       ),

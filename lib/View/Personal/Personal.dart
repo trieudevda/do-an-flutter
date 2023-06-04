@@ -1,3 +1,4 @@
+import 'package:do_an_flutter/Model/Products.dart';
 import 'package:do_an_flutter/View/Personal/Widget/Info.dart';
 import 'package:flutter/material.dart';
 import '../../Model/Invoices.dart';
@@ -21,7 +22,6 @@ class PersonalPage extends StatefulWidget {
 class _PersonalPageState extends State<PersonalPage> {
   int index = 0;
   bool loading = false;
-
   Widget btnIconStatus(
       BuildContext context, String image, String text, int value) {
     return TextButton(

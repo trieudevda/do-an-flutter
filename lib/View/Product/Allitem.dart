@@ -95,6 +95,7 @@ class ItemsWidget extends StatelessWidget {
                                 child: Text(
                                   products[i]['name'],
                                   style: TextStyle(fontSize: 18,),
+                                  maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               )
