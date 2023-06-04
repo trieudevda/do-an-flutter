@@ -27,7 +27,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
   TextEditingController _controllerSearch = TextEditingController();
   @override
   void initState() {
-    _tabController = new TabController(length: 3, vsync: this);
+    _tabController = new TabController(length: 2, vsync: this);
     super.initState();
     //lazyList = List.generate(_currentMax, (index) => "Item : ${index + 1}");
     // _scrollController.addListener(() {
@@ -92,7 +92,6 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
                 tabs: [
                   Tab(text: "Liên quan",),
                   Tab(text: "Khuyến mãi",),
-                  Tab(text: "Lọc <>",),
                 ],
                 
                 controller: _tabController,
@@ -124,7 +123,12 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
                     //   },
                     //   itemCount: lazyList.length + 1,
                     // )
-                    child: Text('haha'),
+                    child: ListView(
+                      children: [   
+                        SizedBox(height: 10,),
+                        ItemsWidget(),  
+                      ],
+                    ),
                   ),
                   Container(
                     child: ListView(
@@ -134,7 +138,6 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
                       ],
                     ),
                   ),
-                  Text('Chưa có'),
                 ],
                 controller: _tabController,
               ),
