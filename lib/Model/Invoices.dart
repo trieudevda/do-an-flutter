@@ -53,12 +53,32 @@ class Invoice {
 
   static Future<List<Object?>> getInvoice() async {
     List<Object?> lst=[];
-    final data = await connectDB().collection(invoiceFB).get();
-    await connectDB().collection(invoiceFB).get()
+    // debugPrint(connectAuth().currentUser?.uid);
+    await connectDB().collection(invoiceFB).where('idUser',isEqualTo: connectAuth().currentUser?.uid).get()
     .then((QuerySnapshot querySnapshot) {
-      lst=querySnapshot.docs.map((e) => e.data()).toList() as List<Object?>;
+      // debugPrint(querySnapshot.toString());
+      lst= querySnapshot.docs.map((e) => {"id":e.id,"data":e.data()}).toList() as List<Object?>;
+      // querySnapshot.docs.map((e){
+      //   debugPrint('id: ${e.id}');
+      // });
     })
     .catchError((e)=>debugPrint('that bai ${e}'));
     return lst;
+  }
+  static Future<List<Object?>> getAllInvoice() async {
+    List<Object?> lst=[];
+    await connectDB().collection(invoiceFB).where('status',isEqualTo: 'Chờ thanh toán').get()
+    .then((QuerySnapshot querySnapshot) {
+      // debugPrint(querySnapshot.toString());
+      lst= querySnapshot.docs.map((e) => {"id":e.id,"data":e.data()}).toList() as List<Object?>;
+      // querySnapshot.docs.map((e){
+      //   debugPrint('id: ${e.id}');
+      // });
+    })
+    .catchError((e)=>debugPrint('that bai ${e}'));
+    return lst;
+  }
+  static Future<void> checkInvoice(String id)async{
+    await connectDB().collection(invoiceFB).doc(id).update({"status":'Đã giao'});
   }
 }

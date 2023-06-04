@@ -68,6 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: "Email",
+                      labelStyle:TextStyle(color: Colors.black),
                       enabledBorder: OutlineInputBorder(),
                       focusedBorder: OutlineInputBorder(),
                       suffixIcon: Icon(Icons.person),
@@ -78,6 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     controller: _fullName,
                     decoration: InputDecoration(
                       labelText: "Họ tên",
+                      labelStyle:TextStyle(color: Colors.black),
                       enabledBorder: OutlineInputBorder(),
                       focusedBorder: OutlineInputBorder(),
                       suffixIcon: Icon(Icons.person),
@@ -109,6 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     controller: _phone,
                     decoration: InputDecoration(
                       labelText: "Số điện thoại",
+                      labelStyle:TextStyle(color: Colors.black),
                       enabledBorder: OutlineInputBorder(),
                       focusedBorder: OutlineInputBorder(),
                       suffixIcon: Icon(Icons.phone),
@@ -119,6 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     controller: _address,
                     decoration: InputDecoration(
                       labelText: "Địa chỉ",
+                      labelStyle:TextStyle(color: Colors.black),
                       enabledBorder: OutlineInputBorder(),
                       focusedBorder: OutlineInputBorder(),
                       suffixIcon: Icon(Icons.home),
@@ -130,6 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     obscureText: _check?false:true,
                     decoration: InputDecoration(
                       labelText: "Mật khẩu",
+                      labelStyle:TextStyle(color: Colors.black),
                       enabledBorder: OutlineInputBorder(),
                       focusedBorder: OutlineInputBorder(),
                       suffixIcon: IconButton(
@@ -150,6 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     obscureText: _check?false:true,
                     decoration: InputDecoration(
                       labelText: "Nhập lại mật khẩu",
+                      labelStyle:TextStyle(color: Colors.black),
                       enabledBorder: OutlineInputBorder(),
                       focusedBorder: OutlineInputBorder(),
                       suffixIcon: IconButton(

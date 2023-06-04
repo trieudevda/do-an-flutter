@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
@@ -55,13 +54,12 @@ class Product {
   static Future<Map<String, dynamic>> getProduct(String id) async {
     Map<String,dynamic> data={};
     await connectDB()
-        .collection(userFB)
+        .collection(productFB)
         .doc(id)
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         data=documentSnapshot.data() as Map<String,dynamic>;
-        debugPrint(data.toString());
       } else {
         debugPrint('Không có dữ liệu');
       }

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../View/Auth/Login/Login.dart';
+import '../View/Personal/Admin.dart';
 import '../Widget/Layout.dart';
 import 'const_model.dart';
 
@@ -104,12 +105,34 @@ class User {
           email: email,
           password: password
       );
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => LayoutWidget(title: 'Bán hàng'),
-        ),
-      );
+      await connectDB().collection(userFB).doc(connectAuth().currentUser?.uid).get()
+      .then((value) {
+        if(value['isAdmin']==true){
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const Admin(),
+            ),
+          );
+        }else{
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LayoutWidget(title: 'Bán hàng'),
+            ),
+          );
+        }
+        // value.data()?.forEach((key, value) {
+        //   // debugPrint('${key}: ${value}');
+        //
+        // });
+      });
+      // Navigator.push(
+      //       //   context,
+      //       //   MaterialPageRoute(
+      //       //     builder: (context) => LayoutWidget(title: 'Bán hàng'),
+      //       //   ),
+      //       // );
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -156,8 +179,8 @@ class User {
         'email': '',
         'address':'',
         'username': '',
-        'isAdmin': '',
-        'status': 'status',};
+        'isAdmin': false,
+        'status': true,};
      debugPrint('loi: ${e.toString()}');
    });
     return data;
