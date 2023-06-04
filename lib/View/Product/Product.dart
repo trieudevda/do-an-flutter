@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:do_an_flutter/View/Product/SaleItem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -134,7 +135,7 @@ class _lstItemState extends State<lstItem> with SingleTickerProviderStateMixin {
                     child: ListView(
                       children: [   
                         SizedBox(height: 10,),
-                        ItemsWidget(),  
+                        saleWidget(),  
                       ],
                     ),
                   ),

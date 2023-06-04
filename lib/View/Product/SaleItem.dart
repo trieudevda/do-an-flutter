@@ -3,10 +3,11 @@ import 'package:do_an_flutter/Model/Products.dart';
 import 'package:do_an_flutter/Model/const_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:intl/intl.dart';
 
 import 'Detail/productDetail.dart';
 
-class ItemsWidget extends StatelessWidget {
+class saleWidget extends StatelessWidget {
   Future<QuerySnapshot<Map<String, dynamic>>> getProducts() async {
     final data = await FirebaseFirestore.instance
         .collection(productFB)
@@ -21,6 +22,12 @@ class ItemsWidget extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final products = snapshot.data!.docs;
+          final filteredProducts = products.where((product) {
+            final promotionPrice = product['promotionPrice'].toString();
+            return promotionPrice.isNotEmpty && int.parse(promotionPrice) > 0;
+          }).toList();
+          final displayedProducts = filteredProducts.length > 1
+              ? filteredProducts.sublist(0,16) : filteredProducts;
           return Container(
             padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             decoration: BoxDecoration(
@@ -33,7 +40,7 @@ class ItemsWidget extends StatelessWidget {
               shrinkWrap: true,
               childAspectRatio: (150 / 215),
               children: [
-                for (int i = 0; i < products.length; i++)
+                for (int i = 0; i < displayedProducts.length; i++)
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -57,17 +64,7 @@ class ItemsWidget extends StatelessWidget {
                               alignment: Alignment.topRight,
                               child: Column(
                                 children: [
-                                  if(products[i]['promotionPrice'] != 0)
                                     Text('Sale', style: TextStyle(fontSize: 10, color: Colors.red),),
-                                ],
-                              )
-                          ),
-                          Align(
-                              alignment: Alignment.topRight,
-                              child: Column(
-                                children: [
-                                  if(products[i]['promotionPrice'] == 0)
-                                    Text('New', style: TextStyle(fontSize: 10, color: Colors.red),),
                                 ],
                               )
                           ),
@@ -100,46 +97,28 @@ class ItemsWidget extends StatelessWidget {
                               )
                             ),
                           Container(
-                            child: Column(
-                              children: [
-                                (products[i]['promotionPrice'] == 0)
-                                ?Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      '${products[i]['price']} đ',
-                                      style: TextStyle(fontSize: 15, color: Colors.red,),
-                                    ),
-                                  ),
-                                ): Column(
-                                  children: [
-                                    Padding(
-                                  padding: EdgeInsets.only(bottom: 3),
-                                  child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      '${products[i]['price']} đ',
-                                      style: TextStyle(fontSize: 15, color: Colors.grey, decoration:
-                                         TextDecoration.lineThrough,),
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Text(
+                                    '${NumberFormat.currency(locale: 'vi').format(displayedProducts[i]['price'])}',
+                                    style: TextStyle(
+                                      decoration: TextDecoration.lineThrough,
+                                      color: Colors.black38,
+                                      fontSize: 13,
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 3),
-                                  child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      '${products[i]['promotionPrice'].toString()} đ',
-                                      style: TextStyle(fontSize: 15, color: Colors.red),
+                                SizedBox(width: 10),
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Text(
+                                    '${NumberFormat.currency(locale: 'vi').format(displayedProducts[i]['promotionPrice']).toString()}',
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                )
-                              ],
-                              )
-                            ],
-                            ),
-                          ),
+                                ),
                           Row(
                             children: [
                               if(products[i]['idCategoryProduct'] == 'fbyCDaL0ApIF89TrLHnC')
