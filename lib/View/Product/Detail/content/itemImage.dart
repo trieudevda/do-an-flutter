@@ -21,7 +21,7 @@ class ItemImage extends StatelessWidget {
                   ),
                 )
               ],
-            )
+            ),
         ],
       ),
     );

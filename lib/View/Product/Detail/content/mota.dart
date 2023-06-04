@@ -1,200 +1,57 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../Model/Products.dart';
+import 'package:do_an_flutter/Model/const_model.dart';
+
 class MoTa extends StatelessWidget {
+  Future<Map<String, dynamic>> getProduct(String id) async {
+    Map<String, dynamic> data = {};
+    await FirebaseFirestore.instance
+        .collection(productFB)
+        .doc(id)
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        data = documentSnapshot.data() as Map<String, dynamic>;
+        debugPrint(data.toString());
+      } else {
+        debugPrint('Không có dữ liệu');
+      }
+    }).catchError((e) {
+      debugPrint('loi: ${e.toString()}');
+    });
+    return data;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Danh mục',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Thương hiệu',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Dung lượng lưu trữ',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Độ phân giải camera',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Loại bảo hành',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Hạn bảo hành',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'RAM',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Tình trạng',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Bộ xử lý',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Model điện thoại',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          width: 30,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Điện thoại',
-              style: TextStyle(
-                fontSize: 18,
-                // color: Colors.blue,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Apple',
-              style: TextStyle(
-                fontSize: 18,
-                //color: Colors.blue,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              '512GB',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              '12MP',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Nhà sản xuất',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              '12 tháng',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              '6GB',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Mới',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'Apple A16 Bionic',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              'iPhone 14 Pro 512GB',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-          ],
-        )
-      ],
+    return FutureBuilder<Map<String, dynamic>>(
+      future: getProduct('0mVatnv6aaNgi9975NQV'),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          final products = snapshot.data!;
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: 400,
+                child: Text(
+                  '${products['description']}',
+                  overflow: TextOverflow.visible,
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              )
+            ],
+          );
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else {
+          return CircularProgressIndicator();
+        }
+      },
     );
   }
 }
