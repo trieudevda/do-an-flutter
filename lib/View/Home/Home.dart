@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:do_an_flutter/View/Home/Widget/Slide.dart';
 import '../Product/SaleItem.dart';
 import 'Widget/DiscountProductGrid.dart';
+import 'Widget/ListNewProduct.dart';
 import 'Widget/NewProductGrid.dart';
 import 'Widget/RecommendProductGrid.dart';
 import 'package:do_an_flutter/View/Home/Category.dart';
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => saleWidget()),
+                            MaterialPageRoute(builder: (context) => ListNewProduct()),
                           );
                         },
                         child: Column(
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => saleWidget()),
+                                  MaterialPageRoute(builder: (context) => ListNewProduct()),
                                 );
                               },
                               child: Image.network(
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => saleWidget()),
+                            MaterialPageRoute(builder: (context) => Category()),
                           );
                         },
                         child: Column(
@@ -86,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => saleWidget()),
+                                  MaterialPageRoute(builder: (context) => Category()),
                                 );
                               },
                               child: Image.network(
@@ -106,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => saleWidget()),
+                            MaterialPageRoute(builder: (context) => Category()),
                           );
                         },
                         child: Column(
@@ -115,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => saleWidget()),
+                                  MaterialPageRoute(builder: (context) => Category()),
                                 );
                               },
                               child: Image.network(
@@ -155,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => saleWidget()),
+                      MaterialPageRoute(builder: (context) => Category()),
                     );
                   },
                   child: Container(
@@ -223,33 +224,33 @@ class _HomePageState extends State<HomePage> {
           Container(
             child: RecommendProductGrid(),
           ),
-          Container(
-            padding: EdgeInsets.only(bottom: 10),
-            margin: EdgeInsets.all(0),
-            color: Color.fromARGB(255, 232, 230, 230),
-            alignment: Alignment.topRight,
-            child: Column(
-              children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => saleWidget()),
-                    );
-                  },
-                  child: Container(
-                      width: 100,
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.all(15),
-                      child: Text(
-                        'Xem thêm',
-                        style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline,),
-                      )
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.only(bottom: 10),
+          //   margin: EdgeInsets.all(0),
+          //   color: Color.fromARGB(255, 232, 230, 230),
+          //   alignment: Alignment.topRight,
+          //   child: Column(
+          //     children: [
+          //       InkWell(
+          //         onTap: () {
+          //           Navigator.push(
+          //             context,
+          //             MaterialPageRoute(builder: (context) => saleWidget()),
+          //           );
+          //         },
+          //         child: Container(
+          //             width: 100,
+          //             alignment: Alignment.center,
+          //             margin: EdgeInsets.all(15),
+          //             child: Text(
+          //               'Xem thêm',
+          //               style: TextStyle(color: Colors.redAccent, decoration: TextDecoration.underline,),
+          //             )
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ],
       ),
     );

@@ -1,14 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:do_an_flutter/Model/Products.dart';
 import 'package:do_an_flutter/Model/const_model.dart';
-import '../../Product/Detail/productDetail.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:intl/intl.dart';
+
+import '../../Product/Detail/productDetail.dart';
+
 
 class ListNewProduct extends StatelessWidget {
   Future<QuerySnapshot<Map<String, dynamic>>> getProducts() async {
     final data = await FirebaseFirestore.instance
         .collection(productFB)
-        .limit(8)
         .get();
     return data;
   }
@@ -26,7 +29,7 @@ class ListNewProduct extends StatelessWidget {
               color: const Color.fromARGB(255, 233, 231, 231),
             ),
             child: GridView.count(
-              physics: NeverScrollableScrollPhysics(),
+              // physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
               shrinkWrap: true,
               childAspectRatio: (150 / 230),
@@ -55,8 +58,9 @@ class ListNewProduct extends StatelessWidget {
                               alignment: Alignment.topRight,
                               child: Column(
                                 children: [
-                                  if(products[i]['promotionPrice'] != 0)
-                                    Text('Sale', style: TextStyle(fontSize: 10, color: Colors.red),),
+
+                                    if(products[i]['promotionPrice'] != 0)
+                                      Text('Sale', style: TextStyle(fontSize: 10, color: Colors.red),),
                                 ],
                               )
                           ),
@@ -64,8 +68,9 @@ class ListNewProduct extends StatelessWidget {
                               alignment: Alignment.topRight,
                               child: Column(
                                 children: [
-                                  if(products[i]['promotionPrice'] == 0)
-                                    Text('New', style: TextStyle(fontSize: 10, color: Colors.red),),
+
+                                    if(products[i]['promotionPrice'] == 0)
+                                      Text('New', style: TextStyle(fontSize: 10, color: Colors.red),),
                                 ],
                               )
                           ),
@@ -108,7 +113,8 @@ class ListNewProduct extends StatelessWidget {
                                     ? Container(
                                   width: MediaQuery.of(context).size.width,
                                   child: Text(
-                                    'Giá: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                    // 'Giá: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                    'Giá: ${products[i]['price']}',
                                     style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.bold,
@@ -120,7 +126,8 @@ class ListNewProduct extends StatelessWidget {
                                     Container(
                                       width: MediaQuery.of(context).size.width,
                                       child: Text(
-                                        'Giá gốc: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                        // 'Giá gốc: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                        'Giá gốc: ${products[i]['price']}',
                                         style: TextStyle(
                                           decoration:
                                           TextDecoration.lineThrough,
@@ -133,7 +140,8 @@ class ListNewProduct extends StatelessWidget {
                                     Container(
                                       width: MediaQuery.of(context).size.width,
                                       child: Text(
-                                        'Giá KM: ${NumberFormat.currency(locale: 'vi').format(products[i]['promotionPrice']).toString()}',
+                                        'Giá gốc: ${products[i]['price']}',
+                                        // 'Giá KM: ${NumberFormat.currency(locale: 'vi').format(products[i]['promotionPrice']).toString()}',
                                         style: TextStyle(
                                           color: Colors.red,
                                           fontSize: 13,
@@ -190,4 +198,5 @@ class ListNewProduct extends StatelessWidget {
       },
     );
   }
+
 }

@@ -29,7 +29,7 @@ class Category extends StatelessWidget {
               color: const Color.fromARGB(255, 233, 231, 231),
             ),
             child: GridView.count(
-              physics: NeverScrollableScrollPhysics(),
+              // physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 2,
               shrinkWrap: true,
               childAspectRatio: (150 / 230),
@@ -111,7 +111,8 @@ class Category extends StatelessWidget {
                                     ? Container(
                                   width: MediaQuery.of(context).size.width,
                                   child: Text(
-                                    'Giá: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                    // 'Giá: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                    'Giá: ${products[i]['price']}',
                                     style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.bold,
@@ -123,7 +124,8 @@ class Category extends StatelessWidget {
                                     Container(
                                       width: MediaQuery.of(context).size.width,
                                       child: Text(
-                                        'Giá gốc: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                        // 'Giá gốc: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                        'Giá gốc: ${products[i]['price']}',
                                         style: TextStyle(
                                           decoration:
                                           TextDecoration.lineThrough,
@@ -136,7 +138,8 @@ class Category extends StatelessWidget {
                                     Container(
                                       width: MediaQuery.of(context).size.width,
                                       child: Text(
-                                        'Giá KM: ${NumberFormat.currency(locale: 'vi').format(products[i]['promotionPrice']).toString()}',
+                                        'Giá gốc: ${products[i]['price']}',
+                                        // 'Giá KM: ${NumberFormat.currency(locale: 'vi').format(products[i]['promotionPrice']).toString()}',
                                         style: TextStyle(
                                           color: Colors.red,
                                           fontSize: 13,
