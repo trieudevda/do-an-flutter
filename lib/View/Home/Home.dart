@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:do_an_flutter/Model/const_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:do_an_flutter/View/Home/Widget/Slide.dart';
+import '../Product/SaleItem.dart';
 import 'Widget/DiscountProductGrid.dart';
 import 'Widget/NewProductGrid.dart';
 import 'Widget/RecommendProductGrid.dart';
@@ -144,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Category()),
+                      MaterialPageRoute(builder: (context) => saleWidget()),
                     );
                   },
                   child: Container(
@@ -183,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Category()),
+                      MaterialPageRoute(builder: (context) => saleWidget()),
                     );
                   },
                   child: Container(
@@ -223,7 +224,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Category()),
+                      MaterialPageRoute(builder: (context) => saleWidget()),
                     );
                   },
                   child: Container(
