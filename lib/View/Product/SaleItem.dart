@@ -11,7 +11,6 @@ class saleWidget extends StatelessWidget {
   Future<QuerySnapshot<Map<String, dynamic>>> getProducts() async {
     final data = await FirebaseFirestore.instance
         .collection(productFB)
-        .limit(100)
         .get();
     return data;
   }
@@ -27,7 +26,7 @@ class saleWidget extends StatelessWidget {
             return promotionPrice.isNotEmpty && int.parse(promotionPrice) > 0;
           }).toList();
           final displayedProducts = filteredProducts.length > 1
-              ? filteredProducts.sublist(0,16) : filteredProducts;
+              ? filteredProducts.sublist(0,15) : filteredProducts;
           return Container(
             padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             decoration: BoxDecoration(

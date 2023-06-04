@@ -3,6 +3,7 @@ import 'package:do_an_flutter/Model/Products.dart';
 import 'package:do_an_flutter/Model/const_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:intl/intl.dart';
 
 import 'Detail/productDetail.dart';
 
@@ -10,7 +11,7 @@ class ItemsWidget extends StatelessWidget {
   Future<QuerySnapshot<Map<String, dynamic>>> getProducts() async {
     final data = await FirebaseFirestore.instance
         .collection(productFB)
-        .limit(100)
+        .limit(26)
         .get();
     return data;
   }
@@ -109,7 +110,7 @@ class ItemsWidget extends StatelessWidget {
                                   child: Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      '${products[i]['price']} đ',
+                                      '${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
                                       style: TextStyle(fontSize: 15, color: Colors.red,),
                                     ),
                                   ),
@@ -120,7 +121,7 @@ class ItemsWidget extends StatelessWidget {
                                   child: Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      '${products[i]['price']} đ',
+                                      '${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
                                       style: TextStyle(fontSize: 15, color: Colors.grey, decoration:
                                          TextDecoration.lineThrough,),
                                     ),
@@ -131,7 +132,7 @@ class ItemsWidget extends StatelessWidget {
                                   child: Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      '${products[i]['promotionPrice'].toString()} đ',
+                                      '${NumberFormat.currency(locale: 'vi').format(products[i]['promotionPrice'])}',
                                       style: TextStyle(fontSize: 15, color: Colors.red),
                                     ),
                                   ),
