@@ -51,8 +51,33 @@ class RecommendProductGrid extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
+                          Align(
+                              alignment: Alignment.topRight,
+                              child: Column(
+                                children: [
+                                  if(products[i]['promotionPrice'] != 0)
+                                    Text('Sale', style: TextStyle(fontSize: 10, color: Colors.red),),
+                                ],
+                              )
+                          ),
+                          Align(
+                              alignment: Alignment.topRight,
+                              child: Column(
+                                children: [
+                                  if(products[i]['promotionPrice'] == 0)
+                                    Text('New', style: TextStyle(fontSize: 10, color: Colors.red),),
+                                ],
+                              )
+                          ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProductDetails(),
+                                ),
+                              );
+                            },
                             child: Container(
                               margin: EdgeInsets.all(10),
                               child: Image.network(
@@ -70,6 +95,8 @@ class RecommendProductGrid extends StatelessWidget {
                               child: Text(
                                 products[i]['name'],
                                 style: TextStyle(fontSize: 14),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ),
@@ -78,42 +105,70 @@ class RecommendProductGrid extends StatelessWidget {
                             child: Column(
                               children: [
                                 (products[i]['promotionPrice'] == 0)
-                                    ? Text(
-                                  'Giá: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.bold,
+                                    ? Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Text(
+                                    'Giá: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 )
                                     : Column(
                                   children: [
-                                    Text(
-                                      'Giá gốc: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
-                                      style: TextStyle(
-                                        decoration:
-                                        TextDecoration.lineThrough,
-                                        color: Colors.black38,
-                                        fontSize: 13,
+                                    Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Text(
+                                        'Giá gốc: ${NumberFormat.currency(locale: 'vi').format(products[i]['price'])}',
+                                        style: TextStyle(
+                                          decoration:
+                                          TextDecoration.lineThrough,
+                                          color: Colors.black38,
+                                          fontSize: 13,
+                                        ),
                                       ),
                                     ),
                                     SizedBox(width: 10),
-                                    Text(
-                                      'Giá KM: ${NumberFormat.currency(locale: 'vi').format(products[i]['promotionPrice']).toString()}',
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.bold,
+                                    Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Text(
+                                        'Giá KM: ${NumberFormat.currency(locale: 'vi').format(products[i]['promotionPrice']).toString()}',
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
                                 SizedBox(width: 10),
-                                Text(
-                                  'Loại: ${products[i]['idCategoryProduct']}',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                Row(
+                                  children: [
+                                    if(products[i]['idCategoryProduct'] == 'fbyCDaL0ApIF89TrLHnC')
+                                      Container(
+                                        child: Text(
+                                          'Loại: Điện thoại',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ),
+                                    if(products[i]['idCategoryProduct'] == '9K6Q38nm0zINxeaGLuqW')
+                                      Container(
+                                        child: Text(
+                                          'Loại: Laptop',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ),
+                                    if(products[i]['idCategoryProduct'] == 'Rfc2JQk0GRtACosc8s5a')
+                                      Container(
+                                        child: Text(
+                                          'Loại: Máy Tính Bảng',
+                                          style: TextStyle(fontSize: 14), textAlign: TextAlign.justify,
+                                        ),
+                                      ),
+
+                                  ],
                                 ),
                               ],
                             ),

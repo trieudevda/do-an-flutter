@@ -4,7 +4,7 @@ import 'package:do_an_flutter/Model/const_model.dart';
 import '../../Product/Detail/productDetail.dart';
 import 'package:intl/intl.dart';
 
-class NewProductGrid extends StatelessWidget {
+class ListNewProduct extends StatelessWidget {
   Future<QuerySnapshot<Map<String, dynamic>>> getProducts() async {
     final data = await FirebaseFirestore.instance
         .collection(productFB)

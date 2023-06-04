@@ -46,7 +46,10 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => saleWidget()),
+                          );
                         },
                         child: Column(
                           children: [
@@ -54,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => Category()),
+                                  MaterialPageRoute(builder: (context) => saleWidget()),
                                 );
                               },
                               child: Image.network(
@@ -72,7 +75,10 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => saleWidget()),
+                          );
                         },
                         child: Column(
                           children: [
@@ -80,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => Category()),
+                                  MaterialPageRoute(builder: (context) => saleWidget()),
                                 );
                               },
                               child: Image.network(
@@ -98,6 +104,10 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       GestureDetector(
                         onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => saleWidget()),
+                          );
                         },
                         child: Column(
                           children: [
@@ -105,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => Category()),
+                                  MaterialPageRoute(builder: (context) => saleWidget()),
                                 );
                               },
                               child: Image.network(

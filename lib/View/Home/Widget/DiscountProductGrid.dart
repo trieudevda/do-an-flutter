@@ -56,8 +56,33 @@ class DiscountProductGrid extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
+                          Align(
+                              alignment: Alignment.topRight,
+                              child: Column(
+                                children: [
+                                  if(displayedProducts[i]['promotionPrice'] != 0)
+                                    Text('Sale', style: TextStyle(fontSize: 10, color: Colors.red),),
+                                ],
+                              )
+                          ),
+                          Align(
+                              alignment: Alignment.topRight,
+                              child: Column(
+                                children: [
+                                  if(displayedProducts[i]['promotionPrice'] == 0)
+                                    Text('New', style: TextStyle(fontSize: 10, color: Colors.red),),
+                                ],
+                              )
+                          ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProductDetails(),
+                                ),
+                              );
+                            },
                             child: Container(
                               margin: EdgeInsets.all(10),
                               child: Image.network(
@@ -75,6 +100,8 @@ class DiscountProductGrid extends StatelessWidget {
                               child: Text(
                                 displayedProducts[i]['name'],
                                 style: TextStyle(fontSize: 14),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ),
@@ -106,16 +133,36 @@ class DiscountProductGrid extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(width: 10),
-                                Text(
-                                  'Loại: ${displayedProducts[i]['idCategoryProduct']}',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                Row(
+                                  children: [
+                                    if(products[i]['idCategoryProduct'] == 'fbyCDaL0ApIF89TrLHnC')
+                                      Container(
+                                        child: Text(
+                                          'Loại: Điện thoại',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ),
+                                    if(products[i]['idCategoryProduct'] == '9K6Q38nm0zINxeaGLuqW')
+                                      Container(
+                                        child: Text(
+                                          'Loại: Laptop',
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ),
+                                    if(products[i]['idCategoryProduct'] == 'Rfc2JQk0GRtACosc8s5a')
+                                      Container(
+                                        child: Text(
+                                          'Loại: Máy Tính Bảng',
+                                          style: TextStyle(fontSize: 14), textAlign: TextAlign.justify,
+                                        ),
+                                      ),
+
+                                  ],
                                 ),
                               ],
                             ),
                           ),
+
                         ],
                       ),
                     ),
